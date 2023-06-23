@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/niTraining"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="Training" />
+
+    <item
+        android:id="@+id/niFavorites"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="Favorites" />
+    <item
+        android:id="@+id/niReport"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="Report" />
+    <item
+        android:id="@+id/niSettings"
+        android:checkable="false"
+        android:icon="@drawable/ic_launcher_background"
+        android:title="Settings" />
+
+    <!-- Add more items as needed -->
+</menu>
