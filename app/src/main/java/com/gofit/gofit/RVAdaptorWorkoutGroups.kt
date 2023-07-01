@@ -1,5 +1,6 @@
 package com.gofit.gofit
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,10 +8,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class RecyclerViewAdapter(private val items: List<TrainingFragment.Item>) : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RVAdaptorWorkoutGroups(private val items: List<TrainingFragment.Item>) : RecyclerView.Adapter<RVAdaptorWorkoutGroups.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_workout, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_workoutgroup, parent, false)
         return ViewHolder(view)
     }
 
@@ -22,7 +23,9 @@ class RecyclerViewAdapter(private val items: List<TrainingFragment.Item>) : Recy
         holder.text.text = item.text
 
         holder.itemView.setOnClickListener {
-            // Handle item click here
+            val context = holder.itemView.context
+            var Intent = Intent(context, WorkoutActivity::class.java)
+            context.startActivity(Intent)
         }
     }
 

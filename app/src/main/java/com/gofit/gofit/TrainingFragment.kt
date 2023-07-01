@@ -22,12 +22,12 @@ class TrainingFragment : Fragment() {
         )
 
         val rootView = inflater.inflate(R.layout.fragment_training, container, false)
-        rvWorkouts = rootView.findViewById(R.id.rvWorkouts)
+        rvWorkouts = rootView.findViewById(R.id.rvWorkoutGroups)
 
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(context)
         rvWorkouts.layoutManager = layoutManager
 
-        val adapter = RecyclerViewAdapter(items)
+        val adapter = RVAdaptorWorkoutGroups(items)
         rvWorkouts.adapter = adapter
 
         return rootView
