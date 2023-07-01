@@ -7,11 +7,11 @@
     android:padding="15dp">
 
     <TextView
-        android:id="@+id/tvReport"
+        android:id="@+id/tvPrivacyPolicy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
-        android:text="REPORT"
+        android:text="PRIVACY POLICY"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent" />
