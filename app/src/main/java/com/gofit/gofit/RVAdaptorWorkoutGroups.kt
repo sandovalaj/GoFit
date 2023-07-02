@@ -15,7 +15,6 @@ class RVAdaptorWorkoutGroups(private val items: List<TrainingFragment.Item>) : R
         return ViewHolder(view)
     }
 
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item: TrainingFragment.Item = items[position]
 
@@ -24,8 +23,12 @@ class RVAdaptorWorkoutGroups(private val items: List<TrainingFragment.Item>) : R
 
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
-            var Intent = Intent(context, WorkoutActivity::class.java)
-            context.startActivity(Intent)
+            val item =  holder.adapterPosition
+            var intent = Intent(context, WorkoutActivity::class.java)
+
+            intent.putExtra("itemId", item) // Pass the necessary data to the second activity
+
+            context.startActivity(intent)
         }
     }
 

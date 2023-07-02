@@ -1,5 +1,6 @@
 package com.gofit.gofit
 
+import android.content.Intent.getIntent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

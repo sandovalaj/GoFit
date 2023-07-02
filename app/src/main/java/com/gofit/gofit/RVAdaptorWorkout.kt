@@ -1,5 +1,6 @@
 package com.gofit.gofit
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +24,13 @@ class RVAdaptorWorkout(private val items: List<WorkoutActivity.Item>) : Recycler
         holder.workoutInfo.text = item.workoutInfo
 
         holder.itemView.setOnClickListener {
-            // Handle item click here
+            val context = holder.itemView.context
+            val item =  holder.adapterPosition
+            var intent = Intent(context, ExerciseActivity::class.java)
+
+            intent.putExtra("itemId", item) // Pass the necessary data to the second activity
+
+            context.startActivity(intent)
         }
     }
 
