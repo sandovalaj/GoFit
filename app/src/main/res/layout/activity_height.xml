@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WelcomeActivity">
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/tvGofit"
@@ -33,10 +33,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tvWelcome"
+            android:id="@+id/tvHeightPrompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Welcome!"
+            android:layout_marginBottom="15dp"
+            android:text="What is your height?"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="24sp"
@@ -44,20 +45,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <TextView
-            android:id="@+id/tvWDescri"
+        <DatePicker
+            android:id="@+id/pickerBday"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:baselineAligned="false"
-            android:text="Let's help you achieve your fitness goals! Join us on this journey towards a healthier you!"
-            android:textAlignment="center"
-            android:textSize="16sp" />
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnWCont"
+        android:id="@+id/btnBCont"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="80dp"

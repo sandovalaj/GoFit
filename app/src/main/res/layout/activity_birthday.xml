@@ -33,9 +33,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tvBday"
+            android:id="@+id/tvBdayPrompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             android:text="When is your birthday?"
             android:textAlignment="center"
             android:textColor="#000000"
@@ -44,15 +45,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <NumberPicker
-            android:id="@+id/picker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <DatePicker
+            android:id="@+id/pickerBday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnSignup"
+        android:id="@+id/btnBCont"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="80dp"
