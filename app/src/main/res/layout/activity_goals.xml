@@ -33,11 +33,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tvHeightPrompt"
+            android:id="@+id/tvGoalPrompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:text="What is your height?"
+            android:layout_marginBottom="30dp"
+            android:text="What's your goal?"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="24sp"
@@ -45,57 +45,40 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvFeetLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_weight="1"
-                android:text="Feet"
-                android:textAlignment="center"
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/tvInchesLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:text="Inches"
-                android:textAlignment="center"
-                android:textColor="#000000" />
-
-        </LinearLayout>
-
-        <LinearLayout
+        <Button
+            android:id="@+id/btnWeightLoss"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginBottom="30dp"
+            android:text="Weight Loss"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <NumberPicker
-                android:id="@+id/pickerFeet"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_weight="1" />
+        <Button
+            android:id="@+id/btnMuscle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="Muscle Gain"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <NumberPicker
-                android:id="@+id/pickerInches"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/btnOverall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="Overall"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnHCont"
+        android:id="@+id/btnGCont"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="80dp"

@@ -5,31 +5,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.NumberPicker
 
-class HeightActivity : AppCompatActivity() {
-    private lateinit var pickerFeet: NumberPicker
-    private lateinit var pickerInches: NumberPicker
-    private lateinit var btnHCont: Button
+class SignupSuccessActivity : AppCompatActivity() {
+    private lateinit var btnSCont: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_height)
+        setContentView(R.layout.activity_signupsuccess)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        pickerFeet = findViewById(R.id.pickerFeet)
-        pickerInches = findViewById(R.id.pickerInches)
-
-        pickerFeet.minValue = 0
-        pickerFeet.maxValue = 10
-
-        pickerInches.minValue = 0
-        pickerInches.maxValue = 11
-
-        btnHCont = findViewById(R.id.btnHCont)
-        btnHCont.setOnClickListener{
-            var intent = Intent(this, WeightActivity::class.java)
+        btnSCont = findViewById(R.id.btnSCont)
+        btnSCont.setOnClickListener{
+            var intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

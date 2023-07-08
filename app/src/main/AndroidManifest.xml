@@ -72,6 +72,56 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".WeightActivity"
+            android:exported="true"
+            android:parentActivityName=".HeightActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".GoalsActivity"
+            android:exported="true"
+            android:parentActivityName=".WeightActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TargetActivity"
+            android:exported="true"
+            android:parentActivityName=".GoalsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LevelActivity"
+            android:exported="true"
+            android:parentActivityName=".TargetActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SignupSuccessActivity"
+            android:exported="true"
+            android:parentActivityName=".LevelActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>

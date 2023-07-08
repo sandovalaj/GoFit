@@ -33,11 +33,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tvHeightPrompt"
+            android:id="@+id/tvWeightPrompt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:text="What is your height?"
+            android:text="What is your current weight?"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="24sp"
@@ -48,54 +48,33 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvFeetLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_weight="1"
-                android:text="Feet"
-                android:textAlignment="center"
-                android:textColor="#000000" />
-
-            <TextView
-                android:id="@+id/tvInchesLabel"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:text="Inches"
-                android:textAlignment="center"
-                android:textColor="#000000" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <NumberPicker
-                android:id="@+id/pickerFeet"
+                android:id="@+id/pickerWeight"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
+                android:layout_marginEnd="10dp"
                 android:layout_weight="1" />
 
-            <NumberPicker
-                android:id="@+id/pickerInches"
-                android:layout_width="200dp"
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="KG"
+                android:textAlignment="center"
+                android:textColor="#040202"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnHCont"
+        android:id="@+id/btnWCont"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="80dp"
