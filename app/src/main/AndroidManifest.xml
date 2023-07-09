@@ -52,9 +52,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BirthdayActivity"
+            android:name=".GenderActivity"
             android:exported="true"
             android:parentActivityName=".WelcomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".BirthdayActivity"
+            android:exported="true"
+            android:parentActivityName=".GenderActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

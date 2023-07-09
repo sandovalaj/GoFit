@@ -91,12 +91,14 @@
             android:text="Join GoFit" />
 
         <TextView
-            android:id="@+id/tvWDescri"
+            android:id="@+id/tvWDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:clickable="true"
             android:text="By joining GoFit, you agree to our Terms of Service"
             android:textAlignment="center"
+            android:textColorLink="#FF0000"
             android:textSize="12sp" />
 
     </LinearLayout>

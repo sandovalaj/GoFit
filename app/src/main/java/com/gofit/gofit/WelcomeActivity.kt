@@ -18,7 +18,7 @@ class WelcomeActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         btnWCont = findViewById(R.id.btnWCont)
         btnWCont.setOnClickListener{
-            var intent = Intent(this, BirthdayActivity::class.java)
+            var intent = Intent(this, GenderActivity::class.java)
             startActivity(intent)
         }
     }

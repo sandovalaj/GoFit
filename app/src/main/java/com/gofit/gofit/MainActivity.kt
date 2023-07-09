@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
 
         btnSignup = findViewById(R.id.btnSignup)
         btnSignup.setOnClickListener{
-            var Intent = Intent(this, SignupActivity::class.java)
-            startActivity(Intent)
+            var intent = Intent(this, SignupActivity::class.java)
+            startActivity(intent)
         }
 
         tvLogin = findViewById(R.id.tvWDescri)
@@ -30,12 +30,12 @@ class MainActivity : AppCompatActivity() {
         var ssText = SpannableString(text)
         var clickText = object : ClickableSpan() {
             override fun onClick(view: View) {
-                var Intent = Intent(this@MainActivity, LoginActivity::class.java)
-                startActivity(Intent)
+                var intent = Intent(this@MainActivity, LoginActivity::class.java)
+                startActivity(intent)
             }
         }
 
-        ssText.setSpan(clickText, 17, 24, 0)
+        ssText.setSpan(clickText, 18, 24, 0)
         tvLogin.text = ssText
         tvLogin.movementMethod = LinkMovementMethod.getInstance()
     }
