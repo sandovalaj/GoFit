@@ -52,6 +52,7 @@ class LoginActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             val intent = Intent(this, HomeActivity::class.java)
+                            DataManager.fetchUserData()
                             startActivity(intent)
                             finish()
                         } else {
