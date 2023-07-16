@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF2E6"
     tools:context=".MainActivity">
 
     <TextView
@@ -49,17 +50,21 @@
             android:textAlignment="center" />
 
         <Button
+            android:background="@drawable/roundstyle"
             android:id="@+id/btnSignup"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="Try it Now" />
+            android:backgroundTint="#DB4437"
+            android:text="Try it Now"
+            android:textColor="#F4F2F2" />
 
         <TextView
             android:id="@+id/tvWDescri"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:clickable="true"
             android:text="Already a Member? Log In"
             android:textAlignment="center"
             android:textColorLink="#ff0000" />
