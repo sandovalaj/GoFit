@@ -11,6 +11,9 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+
 
 class SignupActivity : AppCompatActivity() {
     private lateinit var btnSignup: Button
@@ -24,12 +27,14 @@ class SignupActivity : AppCompatActivity() {
     lateinit var LName: String
     lateinit var Email: String
     lateinit var Password: String
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        auth = FirebaseAuth.getInstance()
 
         etFName = findViewById(R.id.etFName)
         etLName = findViewById(R.id.etLName)
@@ -58,8 +63,18 @@ class SignupActivity : AppCompatActivity() {
             }
 
             if (!inc) {
-                var intent = Intent(this, WelcomeActivity::class.java)
-                startActivity(intent)
+                auth.createUserWithEmailAndPassword(Email, Password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            // Sign-up success, navigate to the next activity (e.g., MainActivity)
+                            val intent = Intent(this, WelcomeActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            // Sign-up failed, show an error message
+                            Toast.makeText(this, "Sign-up failed. Please try again.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
             } else
                 return@setOnClickListener
 
