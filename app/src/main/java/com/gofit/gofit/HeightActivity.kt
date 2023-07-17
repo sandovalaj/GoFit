@@ -25,8 +25,12 @@ class HeightActivity : AppCompatActivity() {
         pickerInches.minValue = 0
         pickerInches.maxValue = 11
 
+        var height = (pickerFeet.value * 12) + pickerInches.value
+
         btnHCont = findViewById(R.id.btnHCont)
         btnHCont.setOnClickListener{
+            DataManager.height = height
+
             var intent = Intent(this, WeightActivity::class.java)
             startActivity(intent)
         }

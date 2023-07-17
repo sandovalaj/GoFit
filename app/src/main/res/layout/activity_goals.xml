@@ -53,7 +53,8 @@
             android:text="Weight Loss"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/button_selector"/>
 
         <Button
             android:id="@+id/btnMuscle"
@@ -63,7 +64,8 @@
             android:text="Muscle Gain"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/button_selector"/>
 
         <Button
             android:id="@+id/btnOverall"
@@ -73,9 +75,24 @@
             android:text="Overall"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/button_selector"/>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvPrompt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="#FA0000"
+        android:textColorLink="#FF0000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnGCont"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loSignup" />
+
 
     <Button
         android:id="@+id/btnGCont"

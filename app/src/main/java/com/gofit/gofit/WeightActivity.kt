@@ -22,6 +22,8 @@ class WeightActivity : AppCompatActivity() {
 
         btnWCont = findViewById(R.id.btnWCont)
         btnWCont.setOnClickListener{
+            DataManager.weight = pickerWeight.value
+
             var intent = Intent(this, GoalsActivity::class.java)
             startActivity(intent)
         }

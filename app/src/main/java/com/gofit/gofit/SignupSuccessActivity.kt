@@ -7,6 +7,8 @@ import android.view.MenuItem
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.NumberPicker
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class SignupSuccessActivity : AppCompatActivity() {
     private lateinit var btnSCont: Button
@@ -18,6 +20,10 @@ class SignupSuccessActivity : AppCompatActivity() {
 
         btnSCont = findViewById(R.id.btnSCont)
         btnSCont.setOnClickListener{
+            // User created successfully, get the user UID
+
+            DataManager.addDocument()
+
             var intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }

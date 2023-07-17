@@ -6,12 +6,14 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.NumberPicker
+import android.widget.TextView
 
 class GoalsActivity : AppCompatActivity() {
     private lateinit var btnWeightLoss: Button
     private lateinit var btnMuscle: Button
     private lateinit var btnOverall: Button
     private lateinit var btnGCont: Button
+    private lateinit var tvPrompt: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,22 +22,39 @@ class GoalsActivity : AppCompatActivity() {
 
         btnWeightLoss = findViewById(R.id.btnWeightLoss)
         btnWeightLoss.setOnClickListener{
-            //
+            btnWeightLoss.isSelected = true
+            btnMuscle.isSelected = false
+            btnOverall.isSelected = false
+            DataManager.goal = 1
         }
 
         btnMuscle = findViewById(R.id.btnMuscle)
         btnMuscle.setOnClickListener{
-            //
+            btnWeightLoss.isSelected = false
+            btnMuscle.isSelected = true
+            btnOverall.isSelected = false
+            DataManager.goal = 2
         }
 
         btnOverall = findViewById(R.id.btnOverall)
         btnOverall.setOnClickListener{
-            //
+            btnWeightLoss.isSelected = false
+            btnMuscle.isSelected = false
+            btnOverall.isSelected = true
+            DataManager.goal = 3
         }
+
+        tvPrompt = findViewById(R.id.tvPrompt)
 
         btnGCont = findViewById(R.id.btnGCont)
         btnGCont.setOnClickListener{
-            var intent = Intent(this, TargetActivity::class.java)
+            if (!btnWeightLoss.isSelected && !btnMuscle.isSelected && !btnOverall.isSelected) {
+                tvPrompt.text = "Please select an option."
+                return@setOnClickListener
+            }
+
+            tvPrompt.text = ""
+            var intent = Intent(this, LevelActivity::class.java)
             startActivity(intent)
         }
 

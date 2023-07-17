@@ -67,6 +67,10 @@ class SignupActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             // Sign-up success, navigate to the next activity (e.g., MainActivity)
+                            DataManager.clearDataManager()
+                            DataManager.fname = FName
+                            DataManager.lname = LName
+
                             val intent = Intent(this, WelcomeActivity::class.java)
                             startActivity(intent)
                             finish()

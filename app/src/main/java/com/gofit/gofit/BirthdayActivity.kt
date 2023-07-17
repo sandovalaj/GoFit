@@ -3,12 +3,15 @@ package com.gofit.gofit
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
 import android.widget.DatePicker
 import androidx.recyclerview.widget.RecyclerView
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 
 class BirthdayActivity : AppCompatActivity() {
     private lateinit var pickerBday: DatePicker
@@ -35,8 +38,15 @@ class BirthdayActivity : AppCompatActivity() {
         val month = pickerBday.month
         val day = pickerBday.dayOfMonth
 
+        calendar.set(year, month, day)
+        val dateFormat = SimpleDateFormat("MM-dd-yyyy", Locale.getDefault())
+        val dateString = dateFormat.format(calendar.time)
+
         btnBCont = findViewById(R.id.btnBCont)
         btnBCont.setOnClickListener{
+
+            DataManager.birthday = dateString
+
             var intent = Intent(this, HeightActivity::class.java)
             startActivity(intent)
         }
