@@ -20,8 +20,8 @@ class RVAdaptorWorkout(private val items: List<WorkoutActivity.Item>) : Recycler
         val item: WorkoutActivity.Item = items[position]
 
         holder.imgWorkout.setImageResource(item.imgId)
-        holder.workoutName.text = item.workoutName
-        holder.workoutInfo.text = item.workoutInfo
+        holder.workoutName.text = item.name
+        holder.workoutInfo.text = item.reps
 
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context

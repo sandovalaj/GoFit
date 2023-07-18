@@ -89,12 +89,4 @@ class ReportFragment : Fragment() {
 
         return rootView
     }
-
-    fun BMIValue() {
-//        BMI calculator, returns BMI value
-    }
-
-    fun BMIInterpetation(BMIValue: Double) {
-//        BMI calculator, returns BMI value
-    }
 }

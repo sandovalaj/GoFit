@@ -3,8 +3,7 @@ package com.gofit.gofit
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.MenuItem
-import android.view.View
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -51,10 +50,7 @@ class LoginActivity : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(Email, Password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
-                            val intent = Intent(this, HomeActivity::class.java)
-                            DataManager.fetchUserData()
-                            startActivity(intent)
-                            finish()
+                            DataManager.fetchUserData(this)
                         } else {
                             Toast.makeText(this, "Authentication failed. Please try again.", Toast.LENGTH_SHORT).show()
                         }
@@ -62,6 +58,16 @@ class LoginActivity : AppCompatActivity() {
             } else
                 return@setOnClickListener
         }
+    }
+
+    fun onUserDataFetched() {
+        val intent = Intent(this, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    fun onFetchError(e: Exception) {
+        Log.e("Hatdog", "Cannot fetch data", e)
     }
 }
 

@@ -1,5 +1,6 @@
 package com.gofit.gofit
 
+import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -9,8 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 class WorkoutActivity : AppCompatActivity() {
     private lateinit var rvWorkouts: RecyclerView
     private lateinit var tvWLabel: TextView
+    private lateinit var db: SQLiteDatabase
 
-    data class Item(val imgId: Int, val workoutName: String, val workoutInfo: String)
+    data class Item(val imgId: Int, val name: String, val reps: String)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +28,10 @@ class WorkoutActivity : AppCompatActivity() {
             Item(R.drawable.imgbshouldersback, "PUSH UPS", "0:30 seconds"),
             Item(R.drawable.imgbleg, "PIKE COMPRESSIONS", "10 reps")
         )
+
+
+        // Process the query results here (iterate through the cursor, etc.)
+
 
         rvWorkouts = findViewById(R.id.rvWorkouts)
         rvWorkouts.layoutManager = LinearLayoutManager(this)

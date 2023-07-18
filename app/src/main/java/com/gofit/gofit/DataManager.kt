@@ -1,13 +1,17 @@
 package com.gofit.gofit
 
 import android.util.Log
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.auth.User
 import com.google.firebase.Timestamp
 
+interface UserDataCallback {
+    fun onUserDataFetched()
+    fun onFetchError(e: Exception)
+}
+
 object DataManager {
+    var fetched: Boolean = false
     var fname: String = ""
     var mname: String = ""
     var lname: String = ""
@@ -24,7 +28,7 @@ object DataManager {
     var discover: MutableList<Int> = mutableListOf()
 
 //    Fetches data from FireStore and places in DataManager of local device
-    fun fetchUserData() {
+    fun fetchUserData(callback: LoginActivity) {
         val db = FirebaseFirestore.getInstance()
         val currentUser = FirebaseAuth.getInstance().currentUser
         val userId = currentUser?.uid
@@ -47,12 +51,16 @@ object DataManager {
                 favorites = documentSnapshot.get("favorites") as MutableList<Int>
                 discover = documentSnapshot.get("discover") as MutableList<Int>
                 workouts = documentSnapshot.get("workouts") as MutableList<Int>
+
+                callback.onUserDataFetched()
             } else {
                 Log.e("Hatdog", "The document does not exist.");
             }
         }?.addOnFailureListener { e ->
             Log.e("Hatdog", "Error fetching data", e);
+            callback.onFetchError(e)
         }
+
     }
 
     // Update Data Manager
