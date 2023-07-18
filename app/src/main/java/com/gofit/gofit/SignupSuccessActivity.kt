@@ -20,8 +20,6 @@ class SignupSuccessActivity : AppCompatActivity() {
 
         btnSCont = findViewById(R.id.btnSCont)
         btnSCont.setOnClickListener{
-            // User created successfully, get the user UID
-
             DataManager.addDocument()
 
             var intent = Intent(this, LoginActivity::class.java)

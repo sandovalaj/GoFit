@@ -136,8 +136,11 @@ object DataManager {
 
     fun clearDataManager() {
         fname = ""
+        mname = ""
         lname = ""
+        address = ""
         gender = 0
+        civil = 0
         birthday = null
         height = 0
         weight = 0

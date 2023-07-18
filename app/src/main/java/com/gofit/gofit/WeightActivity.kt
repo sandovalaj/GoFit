@@ -18,7 +18,7 @@ class WeightActivity : AppCompatActivity() {
 
         pickerWeight = findViewById(R.id.pickerWeight)
         pickerWeight.minValue = 0
-        pickerWeight.maxValue = 100
+        pickerWeight.maxValue = 500
 
         btnWCont = findViewById(R.id.btnWCont)
         btnWCont.setOnClickListener{

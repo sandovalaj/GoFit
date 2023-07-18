@@ -27,19 +27,11 @@ class ReportFragment : Fragment() {
     private lateinit var rbFri: RadioButton
     private lateinit var rbSat: RadioButton
 
-    private lateinit var tvEdit: TextView
     private lateinit var tvBMIValue: TextView
     private lateinit var tvBMIResult: TextView
 
-    private lateinit var rgFitnessGoal: RadioGroup
-    private lateinit var rbWeightLoss: RadioButton
-    private lateinit var rbMuscleGain: RadioButton
-    private lateinit var rbOverall: RadioButton
-
-    private lateinit var rgFitnessLevel: RadioGroup
-    private lateinit var rbBeginner: RadioButton
-    private lateinit var rbInter: RadioButton
-    private lateinit var rbAdvanced: RadioButton
+    private lateinit var tvGoalValue: TextView
+    private lateinit var tvLevelValue: TextView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_report, container, false)
@@ -57,29 +49,43 @@ class ReportFragment : Fragment() {
         rbFri = rootView.findViewById(R.id.rbFri)
         rbSat = rootView.findViewById(R.id.rbSat)
 
-        tvEdit = rootView.findViewById(R.id.tvEdit)
         tvBMIValue = rootView.findViewById(R.id.tvBMIValue)
         tvBMIResult = rootView.findViewById(R.id.tvBMIResult)
 
-        rgFitnessGoal = rootView.findViewById(R.id.rgFitnessGoal)
-        rbWeightLoss = rootView.findViewById(R.id.rbWeightLoss)
-        rbMuscleGain = rootView.findViewById(R.id.rbMuscleGain)
-        rbOverall = rootView.findViewById(R.id.rbOverall)
+        tvGoalValue = rootView.findViewById(R.id.tvGoalValue)
+        tvLevelValue = rootView.findViewById(R.id.tvLevelValue)
 
-        rgFitnessLevel = rootView.findViewById(R.id.rgFitnessLevel)
-        rbBeginner = rootView.findViewById(R.id.rbBeginner)
-        rbInter = rootView.findViewById(R.id.rbInter)
-        rbAdvanced = rootView.findViewById(R.id.rbAdvanced)
+        // Setting up Report
+        // Setting up History
 
         ivCalendar.setOnClickListener {
 
         }
 
-        tvEdit.setOnClickListener {
-
+        // Setting up BMI
+        var bmi = (DataManager.weight.toDouble() / (DataManager.height.toDouble() * DataManager.height.toDouble())) * 703
+        val bmiResult = when {
+            bmi < 18.5 -> "Underweight"
+            bmi < 24.9 -> "Healthy Weight"
+            bmi < 29.9 -> "Overweight"
+            else -> "Obese"
         }
 
+        tvBMIValue.text = String.format("%.2f", bmi)
+        tvBMIResult.text = bmiResult
 
+        // Setting up Goal and Level
+        when (DataManager.goal) {
+            1 -> tvGoalValue.text = "Weight Loss"
+            2 -> tvGoalValue.text = "Muscle Gain"
+            3 -> tvGoalValue.text = "Overall"
+        }
+
+        when (DataManager.level) {
+            1 -> tvLevelValue.text = "Beginner"
+            2 -> tvLevelValue.text = "Intermmediate"
+            3 -> tvLevelValue.text = "Advanced"
+        }
 
         return rootView
     }

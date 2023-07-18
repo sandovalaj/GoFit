@@ -3,6 +3,7 @@ package com.gofit.gofit
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.NumberPicker
@@ -25,10 +26,10 @@ class HeightActivity : AppCompatActivity() {
         pickerInches.minValue = 0
         pickerInches.maxValue = 11
 
-        var height = (pickerFeet.value * 12) + pickerInches.value
-
         btnHCont = findViewById(R.id.btnHCont)
         btnHCont.setOnClickListener{
+            var height = (pickerFeet.value * 12) + pickerInches.value
+
             DataManager.height = height
 
             var intent = Intent(this, WeightActivity::class.java)
