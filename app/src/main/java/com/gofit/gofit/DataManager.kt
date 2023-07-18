@@ -50,31 +50,36 @@ object DataManager {
 
     // Update Data Manager
     fun updateDataManager() {
-//        val db = FirebaseFirestore.getInstance()
-//        val currentUser = FirebaseAuth.getInstance().currentUser
-//        val userId = currentUser?.uid
-//
-//        val userInfoRef = userId?.let { db.collection("user_info").document(it) }
-//        userInfoRef?.get()?.addOnSuccessListener { documentSnapshot ->
-//            if (documentSnapshot.exists()) {
-//                // Document exists, retrieve the data
-//                fname = documentSnapshot.getString("fname").toString()
-//                lname = documentSnapshot.getString("lname").toString()
-//                birthday = documentSnapshot.getString("birthday") as String
-//                gender = documentSnapshot.getLong("gender")!!.toInt()
-//                height = documentSnapshot.getLong("height")!!.toInt()
-//                weight = documentSnapshot.getLong("weight")!!.toInt()
-//                goal = documentSnapshot.getLong("goal")!!.toInt()
-//                level = documentSnapshot.getLong("level")!!.toInt()
-//                favorites = documentSnapshot.get("favorites") as MutableList<Int>
-//                discover = documentSnapshot.get("discover") as MutableList<Int>
-//                workouts = documentSnapshot.get("workouts") as MutableList<Int>
-//            } else {
-//                Log.e("Hatdog", "The document does not exist.");
-//            }
-//        }?.addOnFailureListener { e ->
-//            Log.e("Hatdog", "Error fetching data", e);
-//        }
+        val db = FirebaseFirestore.getInstance()
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val userID = currentUser?.uid
+
+        if (userID != null) {
+            val updates = hashMapOf(
+                "fname" to fname,
+                "lname" to lname,
+                "gender" to gender,
+                "birthday" to birthday,
+                "height" to height,
+                "weight" to weight,
+                "goal" to goal,
+                "level" to level,
+                "workouts" to workouts,
+                "favorites" to favorites,
+                "discover" to discover
+            )
+
+            db.collection("user_info")
+                .document(userID)
+                .update(updates)
+                .addOnFailureListener { e ->
+                    // An error occurred while updating the document
+                    Log.e("Hatdog", "Error updating document", e)
+                }
+        } else {
+            Log.e("Hatdog", "User not found in DB")
+        }
+
     }
 
     fun addDocument() {
@@ -107,6 +112,8 @@ object DataManager {
                     // Handle the error here
                     Log.e("Hatdog", "Error handling data", e);
                 }
+        } else {
+            Log.e("Hatdog", "User does not exist in DB");
         }
     }
 

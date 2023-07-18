@@ -1,5 +1,6 @@
 package com.gofit.gofit
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -23,17 +24,12 @@ class SettingsFragment : Fragment() {
         llLogOut = rootView.findViewById(R.id.llLogOut)
 
         llEditProfile.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragContent, EditProfileFragment())
-                .addToBackStack(null) // This enables the "back" navigation
-                .commit()
+            var intent = Intent(requireActivity(), EditProfileActivity::class.java)
+            startActivity(intent)
         }
 
         llPrivacyPolicy.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(R.id.fragContent, PrivacyPolicyFragment())
-                .addToBackStack(null) // This enables the "back" navigation
-                .commit()
+            // handle item click here
         }
 
         llLogOut.setOnClickListener {

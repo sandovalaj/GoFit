@@ -13,6 +13,9 @@
         android:theme="@style/Theme.GoFIT"
         tools:targetApi="31">
         <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -24,72 +27,58 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity">
-        </activity>
+            android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".SignupActivity"
             android:exported="true"
-            android:parentActivityName=".MainActivity">
-        </activity>
+            android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".WelcomeActivity"
             android:exported="true"
-            android:parentActivityName=".SignupActivity">
-        </activity>
+            android:parentActivityName=".SignupActivity"></activity>
         <activity
             android:name=".GenderActivity"
             android:exported="true"
-            android:parentActivityName=".WelcomeActivity">
-        </activity>
+            android:parentActivityName=".WelcomeActivity"></activity>
         <activity
             android:name=".BirthdayActivity"
             android:exported="true"
-            android:parentActivityName=".GenderActivity">
-        </activity>
+            android:parentActivityName=".GenderActivity"></activity>
         <activity
             android:name=".HeightActivity"
             android:exported="true"
-            android:parentActivityName=".BirthdayActivity">
-        </activity>
+            android:parentActivityName=".BirthdayActivity"></activity>
         <activity
             android:name=".WeightActivity"
             android:exported="true"
-            android:parentActivityName=".HeightActivity">
-        </activity>
+            android:parentActivityName=".HeightActivity"></activity>
         <activity
             android:name=".GoalsActivity"
             android:exported="true"
-            android:parentActivityName=".WeightActivity">
-        </activity>
+            android:parentActivityName=".WeightActivity"></activity>
         <activity
             android:name=".TargetActivity"
             android:exported="true"
-            android:parentActivityName=".GoalsActivity">
-        </activity>
+            android:parentActivityName=".GoalsActivity"></activity>
         <activity
             android:name=".LevelActivity"
             android:exported="true"
-            android:parentActivityName=".TargetActivity">
-        </activity>
+            android:parentActivityName=".TargetActivity"></activity>
         <activity
             android:name=".SignupSuccessActivity"
             android:exported="true"
-            android:parentActivityName=".LevelActivity">
-        </activity>
+            android:parentActivityName=".LevelActivity"></activity>
         <activity
             android:name=".HomeActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".WorkoutActivity"
             android:exported="true"
-            android:parentActivityName=".HomeActivity">
-        </activity>
+            android:parentActivityName=".HomeActivity"></activity>
         <activity
             android:name=".ExerciseActivity"
             android:exported="true"
-            android:parentActivityName=".WorkoutActivity">
-        </activity>
+            android:parentActivityName=".WorkoutActivity"></activity>
     </application>
 
 </manifest>
