@@ -5,12 +5,13 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.auth.User
+import com.google.firebase.Timestamp
 
 object DataManager {
     var fname: String = ""
     var lname: String = ""
     var gender: Int = 0
-    var birthday: String = ""
+    var birthday: Timestamp? = null
     var height: Int = 0
     var weight: Int = 0
     var goal: Int = 0
@@ -31,7 +32,7 @@ object DataManager {
                 // Document exists, retrieve the data
                 fname = documentSnapshot.getString("fname").toString()
                 lname = documentSnapshot.getString("lname").toString()
-                birthday = documentSnapshot.getString("birthday").toString()
+                birthday = documentSnapshot.get("birthday") as Timestamp
                 gender = documentSnapshot.getLong("gender")!!.toInt()
                 height = documentSnapshot.getLong("height")!!.toInt()
                 weight = documentSnapshot.getLong("weight")!!.toInt()
@@ -49,7 +50,7 @@ object DataManager {
     }
 
     // Update Data Manager
-    fun updateDataManager() {
+    fun updateDataManager(): Boolean {
         val db = FirebaseFirestore.getInstance()
         val currentUser = FirebaseAuth.getInstance().currentUser
         val userID = currentUser?.uid
@@ -69,15 +70,19 @@ object DataManager {
                 "discover" to discover
             )
 
-            db.collection("user_info")
-                .document(userID)
-                .update(updates)
-                .addOnFailureListener { e ->
-                    // An error occurred while updating the document
-                    Log.e("Hatdog", "Error updating document", e)
-                }
+            return try {
+                db.collection("user_info")
+                    .document(userID)
+                    .update(updates)
+                    true // Update was successful
+            } catch (e: Exception) {
+                // Update failed, handle the error if needed
+                Log.e("Hatdog", "Error updating document", e)
+                false
+            }
         } else {
             Log.e("Hatdog", "User not found in DB")
+            return false
         }
 
     }
@@ -121,7 +126,7 @@ object DataManager {
         fname = ""
         lname = ""
         gender = 0
-        birthday = ""
+        birthday = null
         height = 0
         weight = 0
         goal = 0

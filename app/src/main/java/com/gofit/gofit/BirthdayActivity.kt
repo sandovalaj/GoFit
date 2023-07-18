@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.DatePicker
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.Timestamp
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -20,10 +21,10 @@ class BirthdayActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_birthday)
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         pickerBday = findViewById(R.id.pickerBday)
+
         val calendar = Calendar.getInstance()
         calendar.set(1970, Calendar.JANUARY, 1)
         val minDate = calendar.timeInMillis
@@ -34,18 +35,19 @@ class BirthdayActivity : AppCompatActivity() {
         pickerBday.minDate = minDate
         pickerBday.maxDate = maxDate
 
-        val year = pickerBday.year
-        val month = pickerBday.month
-        val day = pickerBday.dayOfMonth
 
-        calendar.set(year, month, day)
-        val dateFormat = SimpleDateFormat("MM-dd-yyyy", Locale.getDefault())
-        val dateString = dateFormat.format(calendar.time)
 
         btnBCont = findViewById(R.id.btnBCont)
         btnBCont.setOnClickListener{
+            val year = pickerBday.year
+            val month = pickerBday.month
+            val day = pickerBday.dayOfMonth
 
-            DataManager.birthday = dateString
+            calendar.set(pickerBday.year, pickerBday.month, pickerBday.dayOfMonth)
+            val date = calendar.time
+            val timestamp = Timestamp(date)
+
+            DataManager.birthday = timestamp
 
             var intent = Intent(this, HeightActivity::class.java)
             startActivity(intent)
