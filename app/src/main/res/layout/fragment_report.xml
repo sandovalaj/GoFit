@@ -37,22 +37,139 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="30dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvWorkoutsValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textColor="#B50E0E"
+                        android:textSize="34sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvWorkoutsLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:text="WORKOUTS"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="30dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvCaloriesValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textColor="#B50E0E"
+                        android:textSize="34sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvCaloriesLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:text="CALORIES"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="30dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvMinutesValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textColor="#B50E0E"
+                        android:textSize="34sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvMinutesLabel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:text="MINUTES"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginBottom="30dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvHistory"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginBottom="15dp"
-                    android:text="History"
-                    android:textColor="#000000"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <RadioGroup
+                    <TextView
+                        android:id="@+id/tvHistory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_weight="1"
+                        android:text="History"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivCalendar"
+                        android:layout_width="50sp"
+                        android:layout_height="27sp"
+                        android:layout_gravity="right"
+                        android:layout_weight="1"
+                        app:srcCompat="@drawable/img_calendar_icon"
+                        android:clickable="true"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rgHistoryWeekly"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
@@ -65,48 +182,48 @@
                         android:text="S" />
 
                     <RadioButton
-                        android:id="@+id/rbSun2"
+                        android:id="@+id/rbMon"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="M" />
 
                     <RadioButton
-                        android:id="@+id/rbSun3"
+                        android:id="@+id/rbTue"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="T" />
 
                     <RadioButton
-                        android:id="@+id/rbSun4"
+                        android:id="@+id/rbWed"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="W" />
 
                     <RadioButton
-                        android:id="@+id/rbSun5"
+                        android:id="@+id/rbThu"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="T" />
 
                     <RadioButton
-                        android:id="@+id/rbSun6"
+                        android:id="@+id/rbFri"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="F" />
 
                     <RadioButton
-                        android:id="@+id/rbSun7"
+                        android:id="@+id/rbSat"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="S" />
 
-                </RadioGroup>
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -218,90 +335,6 @@
                         android:layout_height="48dp"
                         android:layout_weight="1"
                         android:text="Overall" />
-                </RadioGroup>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="30dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvTarget"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_weight="1"
-                    android:text="Target Zone"
-                    android:textColor="#000000"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <RadioGroup
-                    android:id="@+id/rgTarget"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/rbAbs"
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_weight="1"
-                            android:text="Abs" />
-
-                        <RadioButton
-                            android:id="@+id/rbArm"
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_weight="1"
-                            android:text="Arm" />
-
-                        <RadioButton
-                            android:id="@+id/rbChest"
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_weight="1"
-                            android:text="Chest" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/rbShoulder"
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_weight="1"
-                            android:text="Shoulder" />
-
-                        <RadioButton
-                            android:id="@+id/rbLeg"
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_weight="1"
-                            android:text="Leg" />
-
-                        <RadioButton
-                            android:id="@+id/rbOverallT"
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_weight="1"
-                            android:text="Overall" />
-                    </LinearLayout>
-
                 </RadioGroup>
             </LinearLayout>
 
