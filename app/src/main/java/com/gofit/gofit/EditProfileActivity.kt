@@ -3,12 +3,14 @@ package com.gofit.gofit
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
@@ -22,10 +24,15 @@ class EditProfileActivity : AppCompatActivity() {
     private lateinit var etLName: EditText
     private lateinit var etBirthday: TextView
     private lateinit var rgGender: RadioGroup
+    private lateinit var rbMale: RadioButton
+    private lateinit var rbFemale: RadioButton
+    private lateinit var rbOthers: RadioButton
+
     private lateinit var btnEditSave: Button
 
     private val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.getDefault())
-    private lateinit var newTimestamp: Timestamp
+    private var newTimestamp: Timestamp? = DataManager.birthday
+    private var newGender: Int = DataManager.gender
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +43,9 @@ class EditProfileActivity : AppCompatActivity() {
         etLName = findViewById(R.id.etLName)
         etBirthday = findViewById(R.id.etBirthday)
         rgGender = findViewById(R.id.rgGender)
+        rbMale = findViewById(R.id.rbMale)
+        rbFemale = findViewById(R.id.rbFemale)
+        rbOthers = findViewById(R.id.rbOthers)
         btnEditSave = findViewById(R.id.btnEditSave)
 
         etFName.setText(DataManager.fname)
@@ -43,6 +53,20 @@ class EditProfileActivity : AppCompatActivity() {
 
         val date = DataManager.birthday?.toDate()
         etBirthday.text = dateFormat.format(date)
+
+        when (DataManager.gender) {
+            1 -> rgGender.check(rbMale.id)
+            2 -> rgGender.check(rbFemale.id)
+            3 -> rgGender.check(rbOthers.id)
+        }
+
+        rgGender.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.rbMale -> newGender = 1
+                R.id.rbFemale -> newGender = 2
+                R.id.rbOthers -> newGender = 3
+            }
+        }
 
         etBirthday.setOnClickListener {
             val calendar = Calendar.getInstance()
@@ -54,7 +78,7 @@ class EditProfileActivity : AppCompatActivity() {
                     selectedDate.set(year, month, dayOfMonth)
 
                     newTimestamp = Timestamp(selectedDate.time)
-                    etBirthday.text = dateFormat.format(newTimestamp.toDate())
+                    etBirthday.text = dateFormat.format(newTimestamp!!.toDate())
                 },
                 calendar.get(Calendar.YEAR),
                 calendar.get(Calendar.MONTH),
@@ -68,6 +92,8 @@ class EditProfileActivity : AppCompatActivity() {
             DataManager.fname = etFName.text.toString()
             DataManager.lname = etLName.text.toString()
             DataManager.birthday = newTimestamp
+            DataManager.gender = newGender
+
             var success = DataManager.updateDataManager()
             if (success) {
                 Toast.makeText(this, "Profile updated.", Toast.LENGTH_SHORT).show()
