@@ -9,8 +9,11 @@ import com.google.firebase.Timestamp
 
 object DataManager {
     var fname: String = ""
+    var mname: String = ""
     var lname: String = ""
     var gender: Int = 0
+    var civil: Int = 0
+    var address: String = ""
     var birthday: Timestamp? = null
     var height: Int = 0
     var weight: Int = 0
@@ -31,8 +34,11 @@ object DataManager {
             if (documentSnapshot.exists()) {
                 // Document exists, retrieve the data
                 fname = documentSnapshot.getString("fname").toString()
+                mname = documentSnapshot.getString("mname").toString()
                 lname = documentSnapshot.getString("lname").toString()
+                address = documentSnapshot.getString("address").toString()
                 birthday = documentSnapshot.get("birthday") as Timestamp
+                civil = documentSnapshot.getLong("civil")!!.toInt()
                 gender = documentSnapshot.getLong("gender")!!.toInt()
                 height = documentSnapshot.getLong("height")!!.toInt()
                 weight = documentSnapshot.getLong("weight")!!.toInt()
@@ -58,7 +64,10 @@ object DataManager {
         if (userID != null) {
             val updates = hashMapOf(
                 "fname" to fname,
+                "mname" to mname,
                 "lname" to lname,
+                "address" to address,
+                "civil" to civil,
                 "gender" to gender,
                 "birthday" to birthday,
                 "height" to height,
@@ -95,7 +104,10 @@ object DataManager {
         if (userId != null) {
             val userInfo = hashMapOf(
                 "fname" to fname,
+                "mname" to mname,
                 "lname" to lname,
+                "address" to address,
+                "civil" to civil,
                 "gender" to gender,
                 "birthday" to birthday,
                 "height" to height,
