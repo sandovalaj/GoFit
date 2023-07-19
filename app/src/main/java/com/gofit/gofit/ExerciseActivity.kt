@@ -8,6 +8,7 @@ import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -29,6 +30,7 @@ class ExerciseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         current = intent.getIntExtra("workoutId", 0)
 
@@ -121,5 +123,15 @@ class ExerciseActivity : AppCompatActivity() {
 
         } else
             Log.e("Hatdog", "Workout null");
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

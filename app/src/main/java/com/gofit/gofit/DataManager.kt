@@ -48,15 +48,15 @@ object DataManager {
                 goal = documentSnapshot.getLong("goal")!!.toInt()
                 level = documentSnapshot.getLong("level")!!.toInt()
                 val favoritesList = documentSnapshot.get("favorites") as? List<HashMap<String, Any>>
-                favorites = favoritesList?.map { workoutMap ->
+                favorites = favoritesList?.map { favoritesMap ->
                     Workout(
-                        (workoutMap["id"] as Long).toInt(),
-                        workoutMap["img"] as String,
-                        workoutMap["name"] as String,
-                        workoutMap["description"] as String,
-                        workoutMap["repetitions"] as String,
-                        (workoutMap["duration"] as Long).toInt(),
-                        workoutMap["met"] as Double
+                        (favoritesMap["id"] as Long).toInt(),
+                        favoritesMap["img"] as String,
+                        favoritesMap["name"] as String,
+                        favoritesMap["description"] as String,
+                        favoritesMap["repetitions"] as String,
+                        (favoritesMap["duration"] as Long).toInt(),
+                        favoritesMap["met"] as Double
                     )
                 }?.toMutableList() ?: mutableListOf()
 
@@ -102,7 +102,7 @@ object DataManager {
             )
         }
 
-        val favoritesList = workouts.map {
+        val favoritesList = favorites.map {
             hashMapOf(
                 "id" to it.id,
                 "img" to it.img,
@@ -165,7 +165,7 @@ object DataManager {
             )
         }
 
-        val favoritesList = workouts.map {
+        val favoritesList = favorites.map {
             hashMapOf(
                 "id" to it.id,
                 "img" to it.img,
