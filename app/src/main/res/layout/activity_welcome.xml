@@ -57,13 +57,27 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnWCont"
+        android:id="@+id/imageButton"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="504dp"
         android:text="Continue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.587"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnWCont"
+        android:layout_width="74dp"
+        android:layout_height="131dp"
+        android:layout_marginBottom="190dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/imgarrow" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

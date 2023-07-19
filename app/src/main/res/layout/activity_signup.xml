@@ -4,46 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#FFF2E6"
     tools:context=".SignupActivity">
 
     <TextView
-        android:id="@+id/tvGofit"
+        android:id="@+id/tvBday3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:text="GoFIT"
-        android:textColor="#000000"
+        android:layout_marginTop="144dp"
+        android:text="started."
+        android:textColor="#675C84"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvGofit8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="FIT"
+        android:textColor="#DB4437"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.553"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvGofit7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Go"
+        android:textColor="#675C84"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/banner2"
+        android:layout_width="425dp"
+        android:layout_height="51dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#DB4437"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvBday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="Hi there! Let's get started."
-        android:textColor="#000000"
+        android:layout_marginTop="112dp"
+        android:text="Hi there!"
+        android:textColor="#DB4437"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvBday2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:text="Let's get"
+        android:textColor="#675C84"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.367"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="385dp"
+        android:layout_height="541dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="15dp"
         android:paddingBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.384"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBday">
+        app:layout_constraintTop_toBottomOf="@+id/tvBday2"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:id="@+id/loSignup"
@@ -57,62 +114,75 @@
             <EditText
                 android:id="@+id/etEmail"
                 style="@style/Widget.AppCompat.EditText"
-                android:layout_width="match_parent"
+                android:layout_width="331dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="#FBFBFB"
                 android:ems="10"
                 android:hint="Email"
-                android:inputType="text|textEmailAddress" />
+                android:inputType="text|textEmailAddress"
+                android:textAlignment="viewStart"
+                android:textColor="#000000" />
 
             <EditText
                 android:id="@+id/etPassword"
                 style="@style/Widget.AppCompat.EditText"
-                android:layout_width="match_parent"
+                android:layout_width="332dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="#FBFBFB"
                 android:ems="10"
                 android:hint="Password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:textAlignment="viewStart" />
 
             <EditText
                 android:id="@+id/etFName"
                 style="@style/Widget.AppCompat.EditText"
-                android:layout_width="match_parent"
+                android:layout_width="333dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="#FBFBFB"
                 android:ems="10"
                 android:hint="First Name"
-                android:inputType="text|textPersonName" />
+                android:inputType="text|textPersonName"
+                android:textAlignment="viewStart" />
 
             <EditText
                 android:id="@+id/etMNameSignup"
                 style="@style/Widget.AppCompat.EditText"
-                android:layout_width="match_parent"
+                android:layout_width="330dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="#FBFBFB"
                 android:ems="10"
                 android:hint="Middle Name"
-                android:inputType="text|textPersonName" />
+                android:inputType="text|textPersonName"
+                android:textAlignment="viewStart" />
 
             <EditText
                 android:id="@+id/etLName"
                 style="@style/Widget.AppCompat.EditText"
-                android:layout_width="match_parent"
+                android:layout_width="329dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="#FBFBFB"
                 android:ems="10"
                 android:hint="Last Name"
-                android:inputType="text|textPersonName" />
+                android:inputType="text|textPersonName"
+                android:textAlignment="viewStart" />
 
             <EditText
                 android:id="@+id/etAddressSignup"
                 style="@style/Widget.AppCompat.EditText"
-                android:layout_width="match_parent"
+                android:layout_width="327dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="16dp"
+                android:backgroundTint="#FBFBFB"
                 android:ems="10"
                 android:hint="Address"
-                android:inputType="text|textPersonName" />
+                android:inputType="text|textPersonName"
+                android:textAlignment="viewStart" />
 
             <TextView
                 android:id="@+id/tvCivil2"
@@ -157,10 +227,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Join GoFit" />
+                android:background="@drawable/roundstyle"
+                android:backgroundTint="#675C84"
+                android:text="Join GoFit"
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/tvWDesc"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -168,6 +242,7 @@
                 android:clickable="true"
                 android:text="By joining GoFit, you agree to our Terms of Service"
                 android:textAlignment="center"
+                android:textColor="#040404"
                 android:textColorLink="#FF0000"
                 android:textSize="12sp" />
 
