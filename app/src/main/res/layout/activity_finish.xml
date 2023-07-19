@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_arm" />
+        app:srcCompat="@drawable/home_arm" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -26,7 +26,7 @@
         android:gravity="end"
         android:orientation="vertical"
         android:padding="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnClose2"
+        app:layout_constraintBottom_toTopOf="@+id/btnCloseF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5">

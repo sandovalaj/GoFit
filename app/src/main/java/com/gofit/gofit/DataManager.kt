@@ -1,5 +1,6 @@
 package com.gofit.gofit
 
+import Workout
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -22,9 +23,8 @@ object DataManager {
     var weight: Int = 0
     var goal: Int = 0
     var level: Int = 0
-    var workouts: MutableList<Int> = mutableListOf()
-    var favorites: MutableList<Int> = mutableListOf()
-    var discover: MutableList<Int> = mutableListOf()
+    var workouts: MutableList<Workout> = mutableListOf()
+    var favorites: MutableList<Workout> = mutableListOf()
 
 //    Fetches data from FireStore and places in DataManager of local device
     fun fetchUserData(callback: LoginActivity) {
@@ -47,16 +47,38 @@ object DataManager {
                 weight = documentSnapshot.getLong("weight")!!.toInt()
                 goal = documentSnapshot.getLong("goal")!!.toInt()
                 level = documentSnapshot.getLong("level")!!.toInt()
-                favorites = documentSnapshot.get("favorites") as MutableList<Int>
-                discover = documentSnapshot.get("discover") as MutableList<Int>
-                workouts = documentSnapshot.get("workouts") as MutableList<Int>
+                val favoritesList = documentSnapshot.get("favorites") as? List<HashMap<String, Any>>
+                favorites = favoritesList?.map { workoutMap ->
+                    Workout(
+                        (workoutMap["id"] as Long).toInt(),
+                        workoutMap["img"] as String,
+                        workoutMap["name"] as String,
+                        workoutMap["description"] as String,
+                        workoutMap["repetitions"] as String,
+                        (workoutMap["duration"] as Long).toInt(),
+                        workoutMap["met"] as Double
+                    )
+                }?.toMutableList() ?: mutableListOf()
+
+                val workoutList = documentSnapshot.get("workouts") as? List<HashMap<String, Any>>
+                workouts = workoutList?.map { workoutMap ->
+                    Workout(
+                        (workoutMap["id"] as Long).toInt(),
+                        workoutMap["img"] as String,
+                        workoutMap["name"] as String,
+                        workoutMap["description"] as String,
+                        workoutMap["repetitions"] as String,
+                        (workoutMap["duration"] as Long).toInt(),
+                        workoutMap["met"] as Double
+                    )
+                }?.toMutableList() ?: mutableListOf()
 
                 callback.onUserDataFetched()
             } else {
-                Log.e("Hatdog", "The document does not exist.");
+                Log.e("DataManager.kt", "The document does not exist.");
             }
         }?.addOnFailureListener { e ->
-            Log.e("Hatdog", "Error fetching data", e);
+            Log.e("DataManager.kt", "Error fetching data", e);
             callback.onFetchError(e)
         }
 
@@ -67,6 +89,30 @@ object DataManager {
         val db = FirebaseFirestore.getInstance()
         val currentUser = FirebaseAuth.getInstance().currentUser
         val userID = currentUser?.uid
+
+        val workoutList = workouts.map {
+            hashMapOf(
+                "id" to it.id,
+                "img" to it.img,
+                "name" to it.name,
+                "description" to it.description,
+                "repetitions" to it.repetitions,
+                "duration" to it.duration,
+                "met" to it.met
+            )
+        }
+
+        val favoritesList = workouts.map {
+            hashMapOf(
+                "id" to it.id,
+                "img" to it.img,
+                "name" to it.name,
+                "description" to it.description,
+                "repetitions" to it.repetitions,
+                "duration" to it.duration,
+                "met" to it.met
+            )
+        }
 
         if (userID != null) {
             val updates = hashMapOf(
@@ -81,9 +127,8 @@ object DataManager {
                 "weight" to weight,
                 "goal" to goal,
                 "level" to level,
-                "workouts" to workouts,
-                "favorites" to favorites,
-                "discover" to discover
+                "workouts" to workoutList,
+                "favorites" to favoritesList,
             )
 
             return try {
@@ -93,11 +138,11 @@ object DataManager {
                     true // Update was successful
             } catch (e: Exception) {
                 // Update failed, handle the error if needed
-                Log.e("Hatdog", "Error updating document", e)
+                Log.e("DataManager.kt", "Error updating document", e)
                 false
             }
         } else {
-            Log.e("Hatdog", "User not found in DB")
+            Log.e("DataManager.kt", "User not found in DB")
             return false
         }
 
@@ -107,6 +152,30 @@ object DataManager {
         val db = FirebaseFirestore.getInstance()
         val currentUser = FirebaseAuth.getInstance().currentUser
         val userId = currentUser?.uid
+
+        val workoutList = workouts.map {
+            hashMapOf(
+                "id" to it.id,
+                "img" to it.img,
+                "name" to it.name,
+                "description" to it.description,
+                "repetitions" to it.repetitions,
+                "duration" to it.duration,
+                "met" to it.met
+            )
+        }
+
+        val favoritesList = workouts.map {
+            hashMapOf(
+                "id" to it.id,
+                "img" to it.img,
+                "name" to it.name,
+                "description" to it.description,
+                "repetitions" to it.repetitions,
+                "duration" to it.duration,
+                "met" to it.met
+            )
+        }
 
         if (userId != null) {
             val userInfo = hashMapOf(
@@ -121,9 +190,8 @@ object DataManager {
                 "weight" to weight,
                 "goal" to goal,
                 "level" to level,
-                "workouts" to workouts,
-                "favorites" to favorites,
-                "discover" to discover
+                "workouts" to workoutList,
+                "favorites" to favoritesList,
                 // Add other user information fields as needed
             )
 
@@ -134,10 +202,10 @@ object DataManager {
                 .addOnFailureListener { e ->
                     // An error occurred while adding the document
                     // Handle the error here
-                    Log.e("Hatdog", "Error handling data", e);
+                    Log.e("DataManager.kt", "Error handling data", e);
                 }
         } else {
-            Log.e("Hatdog", "User does not exist in DB");
+            Log.e("DataManager.kt", "User does not exist in DB");
         }
     }
 
@@ -155,6 +223,5 @@ object DataManager {
         level = 0
         workouts.clear()
         favorites.clear()
-        discover.clear()
     }
 }

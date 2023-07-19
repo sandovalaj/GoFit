@@ -11,6 +11,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 
 class ExerciseActivity : AppCompatActivity() {
     private lateinit var tvExerciseLabel: TextView
@@ -20,6 +21,7 @@ class ExerciseActivity : AppCompatActivity() {
     private lateinit var imgFront: ImageView
     private lateinit var tvPage: TextView
     private lateinit var btnClose: Button
+    private lateinit var ivBookmark: ImageView
 
     private var workoutListSize: Int = 0
     private var current: Int = 0
@@ -40,6 +42,7 @@ class ExerciseActivity : AppCompatActivity() {
         imgFront = findViewById(R.id.imgFront)
         tvPage = findViewById(R.id.tvPage)
         btnClose = findViewById(R.id.btnClose)
+        ivBookmark = findViewById(R.id.ivBookmark)
 
 
         var workout = workoutList?.get(current)
@@ -78,6 +81,16 @@ class ExerciseActivity : AppCompatActivity() {
                 btnClose.text = "CLOSE"
         }
 
+        ivBookmark.setOnClickListener{
+            DataManager.favorites.add(workoutList?.get(current)!!)
+            var success = DataManager.updateDataManager()
+            if (success) {
+                Toast.makeText(this, "Exercise added to favorites!.", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Sorry, something went wrong.", Toast.LENGTH_SHORT).show()
+            }
+        }
+
         btnClose.setOnClickListener{
             if (current == workoutListSize - 1) {
                 var intent = Intent(this, FinishActivity::class.java)
@@ -91,11 +104,6 @@ class ExerciseActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == 101 && resultCode == Activity.RESULT_OK) {
-            // The result is from Activity 3, navigate back to Activity 1
-//            val intent = Intent(this, Activity1::class.java)
-//            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-//            startActivity(intent)
-
             finish()
         }
     }

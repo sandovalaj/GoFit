@@ -1,7 +1,10 @@
 package com.gofit.gofit
 
+import Workout
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract.Data
@@ -261,6 +264,7 @@ class EditProfileActivity : AppCompatActivity() {
             DataManager.gender = newGender
             DataManager.goal = newGoal
             DataManager.level = newLevel
+            DataManager.workouts = forYouWorkouts()
 
             var success = DataManager.updateDataManager()
             if (success) {
@@ -279,5 +283,36 @@ class EditProfileActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    @SuppressLint("Range")
+    fun forYouWorkouts(): MutableList<Workout> {
+        var db: SQLiteDatabase
+        var databaseHelper = DatabaseHelper(this)
+        db = databaseHelper.openDatabase()
+
+        var query = "SELECT * FROM Workouts w WHERE fitness_goal_id = ? AND physical_level_id = ?"
+        var selectionArgs = arrayOf(DataManager.goal.toString(), DataManager.level.toString())
+        var cursor = db.rawQuery(query, selectionArgs)
+
+        var list : MutableList<Workout> = mutableListOf()
+
+        while (cursor.moveToNext()) {
+            val workout_id = cursor.getInt(cursor.getColumnIndex("workout_id"))
+            val name = cursor.getString(cursor.getColumnIndex("name"))
+            val description = cursor.getString(cursor.getColumnIndex("description"))
+            val img = cursor.getString(cursor.getColumnIndex("img"))
+            val repetitions = cursor.getString(cursor.getColumnIndex("repetitions"))
+            val duration = cursor.getInt(cursor.getColumnIndex("duration"))
+            val met = cursor.getDouble(cursor.getColumnIndex("met"))
+
+            val workout = Workout(workout_id, img, name, description, repetitions, duration, met)
+
+            list.add(workout)
+        }
+
+        cursor.close()
+
+        return list
     }
 }
