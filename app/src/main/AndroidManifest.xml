@@ -77,8 +77,7 @@
             android:parentActivityName=".HomeActivity"></activity>
         <activity
             android:name=".ExerciseActivity"
-            android:exported="true"
-            android:parentActivityName=".WorkoutActivity"></activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

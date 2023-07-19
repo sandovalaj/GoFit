@@ -11,7 +11,6 @@ interface UserDataCallback {
 }
 
 object DataManager {
-    var fetched: Boolean = false
     var fname: String = ""
     var mname: String = ""
     var lname: String = ""

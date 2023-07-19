@@ -21,13 +21,16 @@ class RVAdaptorWorkoutGroups(private val items: List<TrainingFragment.Item>) : R
         holder.image.setImageResource(item.imageResId)
         holder.text.text = item.text
 
+        item.workouts
+
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
-            val item =  holder.adapterPosition
+            val id =  holder.adapterPosition
             var intent = Intent(context, WorkoutActivity::class.java)
 
-            intent.putExtra("itemId", item) // Pass the necessary data to the second activity
-
+            intent.putExtra("itemId", id)
+            intent.putParcelableArrayListExtra("workoutList", ArrayList(item.workouts))
+            intent.putExtra("name", items[id].text)
             context.startActivity(intent)
         }
     }
