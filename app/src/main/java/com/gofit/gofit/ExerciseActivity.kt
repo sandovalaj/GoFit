@@ -19,13 +19,17 @@ class ExerciseActivity : AppCompatActivity() {
     private lateinit var tvPage: TextView
     private lateinit var btnClose: Button
 
+    private var workoutListSize: Int = 0
+    private var current: Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
 
-        var clickedWorkout: Int = intent.getIntExtra("workoutId", 0)
+        current = intent.getIntExtra("workoutId", 0)
 
         var workoutList = intent.getParcelableArrayListExtra<Workout>("workoutList")
+        workoutListSize = intent.getIntExtra("numberWorkouts", 0)
 
         tvExerciseLabel = findViewById(R.id.tvExerciseLabel)
         ivWorkout = findViewById(R.id.ivWorkout)
@@ -36,32 +40,49 @@ class ExerciseActivity : AppCompatActivity() {
         btnClose = findViewById(R.id.btnClose)
 
 
-        var workout = workoutList?.get(clickedWorkout)
+        var workout = workoutList?.get(current)
+        show(workout!!)
 
+        imgBack.isEnabled = current > 0
+        imgFront.isEnabled = current < workoutListSize - 1
+
+        imgBack.setOnClickListener {
+            if (current > 0) {
+                current -= 1
+                show(workoutList?.get(current)!!)
+            }
+
+            imgBack.isEnabled = current > 0
+            imgFront.isEnabled = current < workoutListSize - 1
+        }
+
+        imgFront.setOnClickListener{
+            if (current < workoutListSize - 1) {
+                current += 1
+                show(workoutList?.get(current)!!)
+            }
+
+            imgBack.isEnabled = current > 0
+            imgFront.isEnabled = current < workoutListSize - 1
+        }
+
+        btnClose.setOnClickListener{
+            finish()
+        }
+    }
+
+    fun show(workout: Workout) {
         if (workout != null) {
             tvExerciseLabel.text = workout.name
 
             val resID = resources.getIdentifier(workout.img, "drawable", packageName)
             ivWorkout.setImageResource(resID)
 
+            var cur = current + 1
             tvDesc.text = workout.description
+            tvPage.text = "$cur / $workoutListSize"
+
         } else
             Log.e("Hatdog", "Workout null");
-
-
-        tvPage.text = intent.getIntExtra("numberWorkouts", 0).toString()
-
-        imgBack.setOnClickListener {
-
-        }
-
-        imgFront.setOnClickListener{
-
-        }
-
-        btnClose.setOnClickListener{
-            finish()
-        }
-
     }
 }
