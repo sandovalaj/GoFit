@@ -13,7 +13,7 @@ class GoalsActivity : AppCompatActivity() {
     private lateinit var btnMuscle: Button
     private lateinit var btnOverall: Button
     private lateinit var btnGCont: Button
-    private lateinit var tvPrompt: TextView
+    private lateinit var tvGoalPrompt: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,16 +44,16 @@ class GoalsActivity : AppCompatActivity() {
             DataManager.goal = 3
         }
 
-        tvPrompt = findViewById(R.id.tvPrompt)
+        tvGoalPrompt = findViewById(R.id.tvGoalPrompt)
 
         btnGCont = findViewById(R.id.btnGCont)
         btnGCont.setOnClickListener{
             if (!btnWeightLoss.isSelected && !btnMuscle.isSelected && !btnOverall.isSelected) {
-                tvPrompt.text = "Please select an option."
+                tvGoalPrompt.text = "Please select an option."
                 return@setOnClickListener
             }
 
-            tvPrompt.text = ""
+            tvGoalPrompt.text = ""
             var intent = Intent(this, LevelActivity::class.java)
             startActivity(intent)
         }
