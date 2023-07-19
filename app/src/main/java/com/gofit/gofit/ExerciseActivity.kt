@@ -60,14 +60,27 @@ class ExerciseActivity : AppCompatActivity() {
             if (current < workoutListSize - 1) {
                 current += 1
                 show(workoutList?.get(current)!!)
+
+                if (current == workoutListSize - 1) {
+                    btnClose.text = "FINISH"
+                } else
+                    btnClose.text = "CLOSE"
             }
 
             imgBack.isEnabled = current > 0
             imgFront.isEnabled = current < workoutListSize - 1
+
+            if (current == workoutListSize - 1) {
+                btnClose.text = "FINISH"
+            } else
+                btnClose.text = "CLOSE"
         }
 
         btnClose.setOnClickListener{
-            finish()
+            if (current == workoutListSize - 1) {
+                // open end page
+            } else
+                finish()
         }
     }
 
