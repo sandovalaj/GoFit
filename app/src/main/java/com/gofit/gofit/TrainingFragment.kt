@@ -38,11 +38,11 @@ class TrainingFragment : Fragment() {
         }
 
         val items = listOf(
-            Item(R.drawable.img_abs, "ABS $label", all[0]),
-            Item(R.drawable.img_arm, "ARMS $label", all[1]),
-            Item(R.drawable.img_chest, "CHEST $label", all[2]),
-            Item(R.drawable.img_leg, "LEGS $label", all[3]),
-            Item(R.drawable.img_shoulderandback, "SHOULDERS AND BACK $label", all[4])
+            Item(R.drawable.imgbabs, "ABS $label", all[0]),
+            Item(R.drawable.imgbarm, "ARMS $label", all[1]),
+            Item(R.drawable.imgbabs, "CHEST $label", all[2]),
+            Item(R.drawable.imgbleg, "LEGS $label", all[3]),
+            Item(R.drawable.imgbleg, "SHOULDERS AND BACK $label", all[4])
         )
 
         val rootView = inflater.inflate(R.layout.fragment_training, container, false)

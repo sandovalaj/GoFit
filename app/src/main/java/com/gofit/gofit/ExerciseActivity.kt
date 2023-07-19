@@ -2,6 +2,8 @@ package com.gofit.gofit
 
 import Workout
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Intent
 import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -54,17 +56,17 @@ class ExerciseActivity : AppCompatActivity() {
 
             imgBack.isEnabled = current > 0
             imgFront.isEnabled = current < workoutListSize - 1
+
+            if (current == workoutListSize - 1) {
+                btnClose.text = "FINISH"
+            } else
+                btnClose.text = "CLOSE"
         }
 
         imgFront.setOnClickListener{
             if (current < workoutListSize - 1) {
                 current += 1
                 show(workoutList?.get(current)!!)
-
-                if (current == workoutListSize - 1) {
-                    btnClose.text = "FINISH"
-                } else
-                    btnClose.text = "CLOSE"
             }
 
             imgBack.isEnabled = current > 0
@@ -78,9 +80,23 @@ class ExerciseActivity : AppCompatActivity() {
 
         btnClose.setOnClickListener{
             if (current == workoutListSize - 1) {
-                // open end page
+                var intent = Intent(this, FinishActivity::class.java)
+                startActivityForResult(intent, 101)
             } else
                 finish()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 101 && resultCode == Activity.RESULT_OK) {
+            // The result is from Activity 3, navigate back to Activity 1
+//            val intent = Intent(this, Activity1::class.java)
+//            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+//            startActivity(intent)
+
+            finish()
         }
     }
 
