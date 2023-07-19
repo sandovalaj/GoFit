@@ -31,6 +31,7 @@ class GenderActivity : AppCompatActivity() {
             btnMale.isSelected = true
             btnFemale.isSelected = false
             btnNo.isSelected = false
+            DataManager.gender = 1
         }
 
         btnFemale = findViewById(R.id.btnFemale)
@@ -38,6 +39,7 @@ class GenderActivity : AppCompatActivity() {
             btnMale.isSelected = false
             btnFemale.isSelected = true
             btnNo.isSelected = false
+            DataManager.gender = 2
         }
 
         btnNo = findViewById(R.id.btnNo)
@@ -45,6 +47,7 @@ class GenderActivity : AppCompatActivity() {
             btnMale.isSelected = false
             btnFemale.isSelected = false
             btnNo.isSelected = true
+            DataManager.gender = 3
         }
 
         btnGCont = findViewById(R.id.btnGCont)

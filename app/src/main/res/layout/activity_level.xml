@@ -139,6 +139,19 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tvPrompt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="#FA0000"
+        android:textColorLink="#FF0000"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/btnLCont"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loSignup" />
+
     <Button
         android:id="@+id/btnLCont"
         android:layout_width="280dp"
