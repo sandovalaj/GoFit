@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="#FFF2E6"
+    android:background="@color/Background"
     tools:context=".SignupActivity">
 
     <TextView
@@ -114,75 +115,87 @@
             <EditText
                 android:id="@+id/etEmail"
                 style="@style/Widget.AppCompat.EditText"
-                android:layout_width="331dp"
-                android:layout_height="48dp"
+                android:layout_width="330dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="#FBFBFB"
+                android:background="@drawable/edittext_border_black"
                 android:ems="10"
-                android:hint="Email"
+                android:hint="     Email"
                 android:inputType="text|textEmailAddress"
                 android:textAlignment="viewStart"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:textColorHint="@color/black" />
 
             <EditText
                 android:id="@+id/etPassword"
                 style="@style/Widget.AppCompat.EditText"
-                android:layout_width="332dp"
-                android:layout_height="48dp"
+                android:layout_width="330dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="#FBFBFB"
+                android:background="@drawable/edittext_border_black"
                 android:ems="10"
-                android:hint="Password"
+                android:hint="     Password"
                 android:inputType="textPassword"
-                android:textAlignment="viewStart" />
+                android:textAlignment="viewStart"
+                android:textColor="#000000"
+                android:textColorHint="@color/black" />
 
             <EditText
                 android:id="@+id/etFName"
                 style="@style/Widget.AppCompat.EditText"
-                android:layout_width="333dp"
-                android:layout_height="48dp"
+                android:layout_width="330dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="#FBFBFB"
+                android:background="@drawable/edittext_border_black"
                 android:ems="10"
-                android:hint="First Name"
+                android:hint="     First Name"
                 android:inputType="text|textPersonName"
-                android:textAlignment="viewStart" />
+                android:textAlignment="viewStart"
+                android:textColor="#000000"
+                android:textColorHint="@color/black" />
+
 
             <EditText
                 android:id="@+id/etMNameSignup"
                 style="@style/Widget.AppCompat.EditText"
                 android:layout_width="330dp"
-                android:layout_height="48dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="#FBFBFB"
+                android:background="@drawable/edittext_border_black"
                 android:ems="10"
-                android:hint="Middle Name"
+                android:hint="     Middle Name"
                 android:inputType="text|textPersonName"
-                android:textAlignment="viewStart" />
+                android:textAlignment="viewStart"
+                android:textColor="#000000"
+                android:textColorHint="@color/black" />
 
             <EditText
                 android:id="@+id/etLName"
                 style="@style/Widget.AppCompat.EditText"
-                android:layout_width="329dp"
-                android:layout_height="48dp"
+                android:layout_width="330dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="#FBFBFB"
+                android:background="@drawable/edittext_border_black"
                 android:ems="10"
-                android:hint="Last Name"
+                android:hint="     Last Name"
                 android:inputType="text|textPersonName"
-                android:textAlignment="viewStart" />
+                android:textAlignment="viewStart"
+                android:textColor="#000000"
+                android:textColorHint="@color/black" />
 
             <EditText
                 android:id="@+id/etAddressSignup"
                 style="@style/Widget.AppCompat.EditText"
-                android:layout_width="327dp"
-                android:layout_height="48dp"
+                android:layout_width="330dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="16dp"
-                android:backgroundTint="#FBFBFB"
+                android:background="@drawable/edittext_border_black"
                 android:ems="10"
-                android:hint="Address"
+                android:hint="     Address"
                 android:inputType="text|textPersonName"
-                android:textAlignment="viewStart" />
+                android:textAlignment="viewStart"
+                android:textColor="#000000"
+                android:textColorHint="@color/black" />
 
             <TextView
                 android:id="@+id/tvCivil2"

@@ -4,19 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Background"
     tools:context=".WelcomeActivity">
 
     <TextView
-        android:id="@+id/tvGofit"
+        android:id="@+id/tvGofit3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="GoFIT"
-        android:textColor="#000000"
+        android:text="Go"
+        android:textColor="#675C84"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvGofit4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="FIT"
+        android:textColor="#DB4437"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/banner3"
+        android:layout_width="425dp"
+        android:layout_height="51dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#DB4437"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
@@ -38,7 +64,7 @@
             android:layout_height="wrap_content"
             android:text="Welcome!"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="#DB4437"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,31 +78,21 @@
             android:baselineAligned="false"
             android:text="Let's help you achieve your fitness goals! Join us on this journey towards a healthier you!"
             android:textAlignment="center"
+            android:textColor="#040404"
             android:textSize="16sp" />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/imageButton"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="504dp"
-        android:text="Continue"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.587"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <ImageButton
-        android:id="@+id/btnWCont"
-        android:layout_width="74dp"
-        android:layout_height="131dp"
+        android:id="@+id/btnImgCont"
+        android:layout_width="66dp"
+        android:layout_height="109dp"
         android:layout_marginBottom="190dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/imgarrow" />
 

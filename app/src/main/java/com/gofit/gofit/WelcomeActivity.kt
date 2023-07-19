@@ -5,19 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
-import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class WelcomeActivity : AppCompatActivity() {
-    private lateinit var btnWCont: Button
+    private lateinit var btnImgCont: ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        btnWCont = findViewById(R.id.btnWCont)
-        btnWCont.setOnClickListener{
+        btnImgCont = findViewById(R.id.btnImgCont)
+        btnImgCont.setOnClickListener{
             var intent = Intent(this, GenderActivity::class.java)
             startActivity(intent)
         }
