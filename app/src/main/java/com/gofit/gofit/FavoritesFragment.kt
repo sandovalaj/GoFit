@@ -1,5 +1,6 @@
 package com.gofit.gofit
 
+import Workout
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,15 +12,20 @@ import androidx.recyclerview.widget.RecyclerView
 class FavoritesFragment : Fragment() {
     private lateinit var rvForYouWorkouts: RecyclerView
     private lateinit var rvFaveWorkouts: RecyclerView
-    data class Item(val imageResId: Int, val text: String)
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // List of Workout Groups
+        var wtemp = Workout(1, "name", "name", "descr", "reps", 2, 2.3)
+        var temp : MutableList<Workout> = mutableListOf()
+
+        temp.add(wtemp)
+
         val items = listOf(
-            TrainingFragment.Item(R.drawable.imgbabs, "ABS BEGINNER"),
-            TrainingFragment.Item(R.drawable.imgbarm, "ARMS BEGINNER"),
-            TrainingFragment.Item(R.drawable.imgbabs, "CHEST BEGINNER"),
-            TrainingFragment.Item(R.drawable.imgbshouldersback, "SHOULDERS AND BACK BEGINNER"),
-            TrainingFragment.Item(R.drawable.imgbleg, "LEGS BEGINNER")
+            TrainingFragment.Item(R.drawable.imgbabs, "ABS BEGINNER", temp),
+            TrainingFragment.Item(R.drawable.imgbarm, "ARMS BEGINNER", temp),
+            TrainingFragment.Item(R.drawable.imgbabs, "CHEST BEGINNER", temp),
+            TrainingFragment.Item(R.drawable.imgbshouldersback, "SHOULDERS AND BACK BEGINNER", temp),
+            TrainingFragment.Item(R.drawable.imgbleg, "LEGS BEGINNER", temp)
         )
 
         val rootView = inflater.inflate(R.layout.fragment_favorites, container, false)
