@@ -4,20 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#A52626"
+    android:background="@color/Background"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/tvGofit"
+        android:id="@+id/tvGofit17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
-        android:text="GoFIT"
-        android:textColor="#000000"
+        android:text="Go"
+        android:textColor="#675C84"
         android:textSize="24sp"
         android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvGofit18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="FIT"
+        android:textColor="#DB4437"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/banner9"
+        android:layout_width="425dp"
+        android:layout_height="51dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#DB4437"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
@@ -38,9 +63,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
-            android:text="What's your target areas?"
+            android:text="Choose your level"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="@color/Red"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +76,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="15dp"
-            android:background="#D5D6D6"
+            android:background="@drawable/edittext_border_black"
+            android:textColor="@color/black"
             android:orientation="vertical"
             android:padding="10dp"
             android:clickable="true">
@@ -81,7 +107,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="15dp"
-            android:background="#D5D6D6"
+            android:background="@drawable/edittext_border_black"
+            android:textColor="@color/black"
             android:orientation="vertical"
             android:padding="10dp"
             android:clickable="true">
@@ -111,7 +138,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="15dp"
-            android:background="#D5D6D6"
+            android:background="@drawable/edittext_border_black"
+            android:textColor="@color/black"
             android:orientation="vertical"
             android:padding="10dp"
             android:clickable="true">
@@ -157,7 +185,10 @@
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="80dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="#675C84"
         android:text="Continue"
+        android:textColor="#FDFDFD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
