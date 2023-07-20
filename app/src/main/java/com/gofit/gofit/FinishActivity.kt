@@ -4,8 +4,11 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import com.google.firebase.Timestamp
+import java.util.Date
 
 class FinishActivity : AppCompatActivity() {
     private lateinit var tvBMIValueF: TextView
@@ -44,6 +47,29 @@ class FinishActivity : AppCompatActivity() {
 
         btnCloseF.setOnClickListener {
             // save data of report
+
+            var currentDate = Timestamp(Date())
+            DataManager.workoutDates.add(currentDate)
+
+            val uniqueDateStrings: HashSet<String> = HashSet()
+            val uniqueTimestamps: MutableList<Timestamp> = mutableListOf()
+
+            for (timestamp in DataManager.workoutDates) {
+                val date = timestamp.toDate().toString().substringBefore("T") // Extract date part as string
+                if (uniqueDateStrings.add(date)) {
+                    uniqueTimestamps.add(timestamp)
+                }
+            }
+
+            DataManager.workoutDates = uniqueTimestamps
+            DataManager.updateDataManager()
+
+            var temp : MutableList<Date> = mutableListOf()
+            for (i in DataManager.workoutDates) {
+                temp.add(i.toDate())
+            }
+
+            Log.e("FinishActivity", "Dates: $temp");
 
             val resultIntent = Intent()
             setResult(Activity.RESULT_OK, resultIntent)

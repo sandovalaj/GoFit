@@ -5,6 +5,7 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.Timestamp
+import java.time.LocalDate
 
 interface UserDataCallback {
     fun onUserDataFetched()
@@ -25,8 +26,9 @@ object DataManager {
     var level: Int = 0
     var workouts: MutableList<Workout> = mutableListOf()
     var favorites: MutableList<Workout> = mutableListOf()
+    var workoutDates: MutableList<Timestamp> = mutableListOf()
 
-//    Fetches data from FireStore and places in DataManager of local device
+    //    Fetches data from FireStore and places in DataManager of local device
     fun fetchUserData(callback: LoginActivity) {
         val db = FirebaseFirestore.getInstance()
         val currentUser = FirebaseAuth.getInstance().currentUser
@@ -47,6 +49,7 @@ object DataManager {
                 weight = documentSnapshot.getLong("weight")!!.toInt()
                 goal = documentSnapshot.getLong("goal")!!.toInt()
                 level = documentSnapshot.getLong("level")!!.toInt()
+
                 val favoritesList = documentSnapshot.get("favorites") as? List<HashMap<String, Any>>
                 favorites = favoritesList?.map { favoritesMap ->
                     Workout(
@@ -72,6 +75,9 @@ object DataManager {
                         workoutMap["met"] as Double
                     )
                 }?.toMutableList() ?: mutableListOf()
+
+                val workoutDatesList = documentSnapshot.get("workoutDates") as? List<Timestamp>
+                workoutDates = workoutDatesList?.toMutableList() ?: mutableListOf()
 
                 callback.onUserDataFetched()
             } else {
@@ -114,6 +120,8 @@ object DataManager {
             )
         }
 
+        val workoutDatesList = workoutDates.map { it }
+
         if (userID != null) {
             val updates = hashMapOf(
                 "fname" to fname,
@@ -129,6 +137,7 @@ object DataManager {
                 "level" to level,
                 "workouts" to workoutList,
                 "favorites" to favoritesList,
+                "workoutDates" to workoutDatesList
             )
 
             return try {
@@ -177,6 +186,8 @@ object DataManager {
             )
         }
 
+        val workoutDatesList = workoutDates.map { it }
+
         if (userId != null) {
             val userInfo = hashMapOf(
                 "fname" to fname,
@@ -192,6 +203,7 @@ object DataManager {
                 "level" to level,
                 "workouts" to workoutList,
                 "favorites" to favoritesList,
+                "workoutDates" to workoutDatesList
                 // Add other user information fields as needed
             )
 
@@ -223,5 +235,6 @@ object DataManager {
         level = 0
         workouts.clear()
         favorites.clear()
+        workoutDates.clear()
     }
 }
