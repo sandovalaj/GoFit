@@ -1,17 +1,19 @@
 package com.gofit.gofit
 
-import android.app.DatePickerDialog
+import android.app.AlertDialog
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.google.firebase.Timestamp
+import com.applandeo.materialcalendarview.CalendarView
+import com.applandeo.materialcalendarview.EventDay
 import java.util.Calendar
+
 
 class ReportFragment : Fragment() {
     private lateinit var tvWorkoutsValue: TextView
@@ -32,6 +34,8 @@ class ReportFragment : Fragment() {
 
     private lateinit var tvGoalValue: TextView
     private lateinit var tvLevelValue: TextView
+
+    private lateinit var cvCalendar: CalendarView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val rootView = inflater.inflate(R.layout.fragment_report, container, false)
@@ -59,7 +63,48 @@ class ReportFragment : Fragment() {
         // Setting up History
 
         ivCalendar.setOnClickListener {
+            var calendarDialog = layoutInflater.inflate(R.layout.dialogue_calendar_view, null)
+            cvCalendar = calendarDialog.findViewById<CalendarView>(R.id.cvCalendar)
 
+            var calendar: Calendar = Calendar.getInstance()
+            var currentYear: Int = calendar.get(Calendar.YEAR)
+            var currentMonth: Int = calendar.get(Calendar.MONTH)
+            var currentDayOfMonth: Int = calendar.get(Calendar.DAY_OF_MONTH)
+
+            calendar.set(currentYear, currentMonth, currentDayOfMonth)
+            cvCalendar.setDate(calendar)
+
+            calendar = Calendar.getInstance()
+            calendar.add(Calendar.MONTH, -5)
+            var min = calendar
+
+            calendar = Calendar.getInstance()
+            calendar.add(Calendar.MONTH, 5)
+            val max = calendar
+
+            cvCalendar.setMinimumDate(min)
+            cvCalendar.setMaximumDate(max)
+
+            var highlightedDates: MutableList<EventDay> = mutableListOf()
+
+            for (timestamp in DataManager.workoutDates) {
+                var timestampToDate = timestamp.toDate()
+                var temp = Calendar.getInstance()
+                temp.time = timestampToDate
+                highlightedDates.add(EventDay(temp, R.drawable.calendar_icon))
+            }
+
+            cvCalendar.setEvents(highlightedDates)
+
+            val alertDialogBuilder = AlertDialog.Builder(requireContext())
+                .setTitle("Workout History")
+                .setView(calendarDialog)
+                .setNegativeButton("Close") { dialog, _ ->
+                    dialog.dismiss()
+                }
+
+            val alertDialog = alertDialogBuilder.create()
+            alertDialog.show()
         }
 
         // Setting up BMI
@@ -89,4 +134,6 @@ class ReportFragment : Fragment() {
 
         return rootView
     }
+
+
 }
