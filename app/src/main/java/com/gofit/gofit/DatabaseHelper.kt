@@ -11,7 +11,7 @@ class DatabaseHelper(private val context: Context) : SQLiteOpenHelper(context, D
 
     companion object {
         private const val DATABASE_NAME = "workout_database.db"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 2
     }
 
     private var database: SQLiteDatabase? = null
@@ -21,7 +21,7 @@ class DatabaseHelper(private val context: Context) : SQLiteOpenHelper(context, D
             createDatabase()
         } catch (e: IOException) {
             // Handle the exception, e.g., display an error message
-            Log.e("Hatdog", "Error in creating database.");
+            Log.e("DatabaseHelper.kt", "Error in creating database.");
         }
     }
 
@@ -40,7 +40,7 @@ class DatabaseHelper(private val context: Context) : SQLiteOpenHelper(context, D
                 output.flush()
                 output.close()
             } catch (e: IOException) {
-                Log.e("Hatdog", "Error in creating database 2.");
+                Log.e("DatabaseHelper.kt", "Error in creating database 2.");
             }
         }
     }

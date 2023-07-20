@@ -36,9 +36,9 @@ class FavoritesFragment : Fragment() {
         var levelLabel = ""
 
         when (DataManager.goal) {
-            1 -> goalLabel = "BEGINNER"
-            2 -> goalLabel = "INTERMEDIATE"
-            3 -> goalLabel = "ADVANCED"
+            1 -> goalLabel = "WEIGHT LOSS"
+            2 -> goalLabel = "MUSCLE GAIN"
+            3 -> goalLabel = "OVERALL"
         }
 
         when (DataManager.level) {

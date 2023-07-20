@@ -15,35 +15,50 @@ import androidx.recyclerview.widget.RecyclerView
 class TrainingFragment : Fragment() {
     private lateinit var rvWorkouts: RecyclerView
     private lateinit var tvWorkoutLabel: TextView
-    private var label: String = ""
     private lateinit var db: SQLiteDatabase
 
     data class Item(val imageResId: Int, val text: String, val workouts: MutableList<Workout>)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var databaseHelper = DatabaseHelper(requireContext())
-        db = databaseHelper.openDatabase()
-
         var all: MutableList<MutableList<Workout>> = mutableListOf()
         var list : MutableList<Workout> = mutableListOf()
 
-        for (i in 1..5) {
-            list = search(i)
-            all.add(list)
-        }
+        var items = mutableListOf<Item>()
+        var levelLabel = ""
+        var targetLabel = ""
+        var resID = 0
 
-        when (DataManager.level) {
-            1 -> label = "BEGINNER"
-            2 -> label = "INTERMEDIATE"
-            3 -> label = "ADVANCED"
-        }
+        for (level in 1..3) {
+            when (level) {
+                1 -> levelLabel = "BEGINNER"
+                2 -> levelLabel = "INTERMEDIATE"
+                3 -> levelLabel = "ADVANCED"
+            }
 
-        val items = listOf(
-            Item(R.drawable.imgbabs, "ABS $label", all[0]),
-            Item(R.drawable.imgbarm, "ARMS $label", all[1]),
-            Item(R.drawable.imgbabs, "CHEST $label", all[2]),
-            Item(R.drawable.imgbleg, "LEGS $label", all[3]),
-            Item(R.drawable.imgbleg, "SHOULDERS AND BACK $label", all[4])
-        )
+            for (target in 1..5) {
+                when (target) {
+                    1 -> {
+                        targetLabel = "ABS"
+                        resID = resources.getIdentifier("home_abs", "drawable", requireContext().packageName)
+                    } 2 -> {
+                        targetLabel = "ARMS"
+                        resID = resources.getIdentifier("home_arm", "drawable", requireContext().packageName)
+                    } 3 -> {
+                        targetLabel = "CHEST"
+                        resID = resources.getIdentifier("home_chest", "drawable", requireContext().packageName)
+                    } 4 -> {
+                        targetLabel = "LEGS"
+                        resID = resources.getIdentifier("home_leg", "drawable", requireContext().packageName)
+                    } 5 -> {
+                        targetLabel = "SHOULDERS AND BACK"
+                        resID = resources.getIdentifier("home_shoulderandback", "drawable", requireContext().packageName)
+                    }
+                }
+
+                list = search(level, target)
+                val item = Item(resID, "$targetLabel $levelLabel", list)
+                items.add(item)
+            }
+        }
 
         val rootView = inflater.inflate(R.layout.fragment_training, container, false)
         rvWorkouts = rootView.findViewById(R.id.rvWorkoutGroups)
@@ -55,14 +70,17 @@ class TrainingFragment : Fragment() {
         rvWorkouts.adapter = adapter
 
         tvWorkoutLabel = rootView.findViewById(R.id.tvWorkoutLabel)
-        tvWorkoutLabel.text = label
+        tvWorkoutLabel.text = "Test"
         return rootView
     }
 
     @SuppressLint("Range")
-    fun search(i: Int): MutableList<Workout> {
-        var query = "SELECT * FROM Workouts w WHERE fitness_goal_id = ? AND physical_level_id = ? AND target_zone_id = ?"
-        var selectionArgs = arrayOf(DataManager.goal.toString(), DataManager.level.toString(), i.toString())
+    fun search(level: Int, target: Int): MutableList<Workout> {
+        var databaseHelper = DatabaseHelper(requireContext())
+        db = databaseHelper.openDatabase()
+
+        var query = "SELECT * FROM Home h WHERE physical_level_id = ? AND target_zone_id = ?"
+        var selectionArgs = arrayOf(level.toString(), target.toString())
         var cursor = db.rawQuery(query, selectionArgs)
 
         var list : MutableList<Workout> = mutableListOf()
