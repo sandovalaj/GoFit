@@ -21,19 +21,9 @@ class ReportFragment : Fragment() {
     private lateinit var tvMinutesValue: TextView
 
     private lateinit var ivCalendar: ImageView
-    private lateinit var rbSun: RadioButton
-    private lateinit var rbMon: RadioButton
-    private lateinit var rbTue: RadioButton
-    private lateinit var rbWed: RadioButton
-    private lateinit var rbThu: RadioButton
-    private lateinit var rbFri: RadioButton
-    private lateinit var rbSat: RadioButton
 
     private lateinit var tvBMIValue: TextView
     private lateinit var tvBMIResult: TextView
-
-    private lateinit var tvGoalValue: TextView
-    private lateinit var tvLevelValue: TextView
 
     private lateinit var cvCalendar: CalendarView
 
@@ -45,67 +35,47 @@ class ReportFragment : Fragment() {
         tvMinutesValue = rootView.findViewById(R.id.tvMinutesValue)
 
         ivCalendar = rootView.findViewById(R.id.ivCalendar)
-        rbSun  = rootView.findViewById(R.id.rbSun)
-        rbMon = rootView.findViewById(R.id.rbMon)
-        rbTue = rootView.findViewById(R.id.rbTue)
-        rbWed = rootView.findViewById(R.id.rbWed)
-        rbThu = rootView.findViewById(R.id.rbThu)
-        rbFri = rootView.findViewById(R.id.rbFri)
-        rbSat = rootView.findViewById(R.id.rbSat)
+        cvCalendar = rootView.findViewById(R.id.cvCalendar)
 
         tvBMIValue = rootView.findViewById(R.id.tvBMIValue)
         tvBMIResult = rootView.findViewById(R.id.tvBMIResult)
 
-        tvGoalValue = rootView.findViewById(R.id.tvGoalValue)
-        tvLevelValue = rootView.findViewById(R.id.tvLevelValue)
-
         // Setting up Report
+        tvWorkoutsValue.text = DataManager.workoutsAccomplished.toString()
+        tvCaloriesValue.text = DataManager.calories.toString()
+        tvMinutesValue.text = DataManager.minutes.toString()
+
         // Setting up History
+        var calendar: Calendar = Calendar.getInstance()
+        var currentYear: Int = calendar.get(Calendar.YEAR)
+        var currentMonth: Int = calendar.get(Calendar.MONTH)
+        var currentDayOfMonth: Int = calendar.get(Calendar.DAY_OF_MONTH)
 
-        ivCalendar.setOnClickListener {
-            var calendarDialog = layoutInflater.inflate(R.layout.dialogue_calendar_view, null)
-            cvCalendar = calendarDialog.findViewById<CalendarView>(R.id.cvCalendar)
+        calendar.set(currentYear, currentMonth, currentDayOfMonth)
 
-            var calendar: Calendar = Calendar.getInstance()
-            var currentYear: Int = calendar.get(Calendar.YEAR)
-            var currentMonth: Int = calendar.get(Calendar.MONTH)
-            var currentDayOfMonth: Int = calendar.get(Calendar.DAY_OF_MONTH)
+        cvCalendar.setDate(calendar)
 
-            calendar.set(currentYear, currentMonth, currentDayOfMonth)
-            cvCalendar.setDate(calendar)
+        calendar = Calendar.getInstance()
+        calendar.add(Calendar.MONTH, -5)
+        var min = calendar
 
-            calendar = Calendar.getInstance()
-            calendar.add(Calendar.MONTH, -5)
-            var min = calendar
+        calendar = Calendar.getInstance()
+        calendar.add(Calendar.MONTH, 5)
+        val max = calendar
 
-            calendar = Calendar.getInstance()
-            calendar.add(Calendar.MONTH, 5)
-            val max = calendar
+        cvCalendar.setMinimumDate(min)
+        cvCalendar.setMaximumDate(max)
 
-            cvCalendar.setMinimumDate(min)
-            cvCalendar.setMaximumDate(max)
+        var highlightedDates: MutableList<EventDay> = mutableListOf()
 
-            var highlightedDates: MutableList<EventDay> = mutableListOf()
-
-            for (timestamp in DataManager.workoutDates) {
-                var timestampToDate = timestamp.toDate()
-                var temp = Calendar.getInstance()
-                temp.time = timestampToDate
-                highlightedDates.add(EventDay(temp, R.drawable.calendar_icon))
-            }
-
-            cvCalendar.setEvents(highlightedDates)
-
-            val alertDialogBuilder = AlertDialog.Builder(requireContext())
-                .setTitle("Workout History")
-                .setView(calendarDialog)
-                .setNegativeButton("Close") { dialog, _ ->
-                    dialog.dismiss()
-                }
-
-            val alertDialog = alertDialogBuilder.create()
-            alertDialog.show()
+        for (timestamp in DataManager.workoutDates) {
+            var timestampToDate = timestamp.toDate()
+            var temp = Calendar.getInstance()
+            temp.time = timestampToDate
+            highlightedDates.add(EventDay(temp, R.drawable.icon_dumbell))
         }
+
+        cvCalendar.setEvents(highlightedDates)
 
         // Setting up BMI
         var bmi = (DataManager.weight.toDouble() / (DataManager.height.toDouble() * DataManager.height.toDouble())) * 703
@@ -119,18 +89,6 @@ class ReportFragment : Fragment() {
         tvBMIValue.text = String.format("%.2f", bmi)
         tvBMIResult.text = bmiResult
 
-        // Setting up Goal and Level
-        when (DataManager.goal) {
-            1 -> tvGoalValue.text = "Weight Loss"
-            2 -> tvGoalValue.text = "Muscle Gain"
-            3 -> tvGoalValue.text = "Overall"
-        }
-
-        when (DataManager.level) {
-            1 -> tvLevelValue.text = "Beginner"
-            2 -> tvLevelValue.text = "Intermmediate"
-            3 -> tvLevelValue.text = "Advanced"
-        }
 
         return rootView
     }

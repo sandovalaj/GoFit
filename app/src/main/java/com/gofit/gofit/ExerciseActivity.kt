@@ -26,6 +26,8 @@ class ExerciseActivity : AppCompatActivity() {
 
     private var workoutListSize: Int = 0
     private var current: Int = 0
+    private var nexts: Int = 0
+    private var passed: MutableList<Int> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +55,11 @@ class ExerciseActivity : AppCompatActivity() {
         imgBack.isEnabled = current > 0
         imgFront.isEnabled = current < workoutListSize - 1
 
+        if (current == workoutListSize - 1 && nexts >= workoutListSize - 1) {
+            btnClose.text = "FINISH"
+        } else
+            btnClose.text = "CLOSE"
+
         imgBack.setOnClickListener {
             if (current > 0) {
                 current -= 1
@@ -62,7 +69,7 @@ class ExerciseActivity : AppCompatActivity() {
             imgBack.isEnabled = current > 0
             imgFront.isEnabled = current < workoutListSize - 1
 
-            if (current == workoutListSize - 1) {
+            if (current == workoutListSize - 1 && nexts >= workoutListSize - 1) {
                 btnClose.text = "FINISH"
             } else
                 btnClose.text = "CLOSE"
@@ -77,30 +84,73 @@ class ExerciseActivity : AppCompatActivity() {
             imgBack.isEnabled = current > 0
             imgFront.isEnabled = current < workoutListSize - 1
 
-            if (current == workoutListSize - 1) {
+            var found = passed.find { it == workoutList?.get(current)!!.id }
+            if (found == null) {
+                passed.add(workoutList?.get(current)!!.id)
+                nexts += 1
+            }
+
+            if (current == workoutListSize - 1 && nexts >= workoutListSize - 1) {
                 btnClose.text = "FINISH"
             } else
                 btnClose.text = "CLOSE"
         }
 
+        // add check if fave already exists
+        // add unfavorite
         ivBookmark.setOnClickListener{
-            DataManager.favorites.add(workoutList?.get(current)!!)
-            var success = DataManager.updateDataManager()
-            if (success) {
-                Toast.makeText(this, "Exercise added to favorites!.", Toast.LENGTH_SHORT).show()
+            // Use the find method to search for the targetWorkout in the favorites list
+            val foundWorkout: Workout? = DataManager.favorites.find { it.id == workoutList?.get(current)!!.id }
+
+            // Check if the workout was found or not
+            if (foundWorkout != null) {
+                val isRemoved: Boolean = DataManager.favorites.remove(workoutList?.get(current)!!)
+
+                var success = DataManager.updateDataManager()
+                if (success && isRemoved) {
+                    Toast.makeText(this, "Exercise removed from favorites.", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Sorry, something went wrong.", Toast.LENGTH_SHORT).show()
+                }
             } else {
-                Toast.makeText(this, "Sorry, something went wrong.", Toast.LENGTH_SHORT).show()
+                val isAdded: Boolean = DataManager.favorites.add(workoutList?.get(current)!!)
+
+                var success = DataManager.updateDataManager()
+                if (success && isAdded) {
+                    Toast.makeText(this, "Exercise added to favorites!.", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Sorry, something went wrong.", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
         btnClose.setOnClickListener{
-            if (current == workoutListSize - 1) {
+            if (current == workoutListSize - 1 && nexts >= workoutListSize - 1) {
+                var totalMet = 0.0
+                var totalDurationSeconds = 0.0
+                var calories = 0.0
+
+                for (workout in workoutList!!) {
+                    totalMet += workout.met
+                    totalDurationSeconds += workout.duration
+                }
+
+                var durationMinutes = totalDurationSeconds / 60
+                durationMinutes = Math.ceil(durationMinutes)
+
+                calories = totalMet * (DataManager.weight * 0.453592) * (durationMinutes / 60)
                 var intent = Intent(this, FinishActivity::class.java)
+
+                intent.putExtra("numberWorkouts", workoutListSize)
+                intent.putExtra("minutes", durationMinutes.toInt())
+                intent.putExtra("calories",  calories.toInt())
+
                 startActivityForResult(intent, 101)
             } else
                 finish()
         }
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

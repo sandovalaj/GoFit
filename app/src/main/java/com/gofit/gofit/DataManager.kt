@@ -27,6 +27,9 @@ object DataManager {
     var workouts: MutableList<Workout> = mutableListOf()
     var favorites: MutableList<Workout> = mutableListOf()
     var workoutDates: MutableList<Timestamp> = mutableListOf()
+    var workoutsAccomplished: Int = 0
+    var calories: Int = 0
+    var minutes: Int = 0
 
     //    Fetches data from FireStore and places in DataManager of local device
     fun fetchUserData(callback: LoginActivity) {
@@ -49,6 +52,9 @@ object DataManager {
                 weight = documentSnapshot.getLong("weight")!!.toInt()
                 goal = documentSnapshot.getLong("goal")!!.toInt()
                 level = documentSnapshot.getLong("level")!!.toInt()
+                workoutsAccomplished = documentSnapshot.getLong("workoutsAccomplished")!!.toInt()
+                calories = documentSnapshot.getLong("calories")!!.toInt()
+                minutes = documentSnapshot.getLong("minutes")!!.toInt()
 
                 val favoritesList = documentSnapshot.get("favorites") as? List<HashMap<String, Any>>
                 favorites = favoritesList?.map { favoritesMap ->
@@ -137,7 +143,10 @@ object DataManager {
                 "level" to level,
                 "workouts" to workoutList,
                 "favorites" to favoritesList,
-                "workoutDates" to workoutDatesList
+                "workoutDates" to workoutDatesList,
+                "workoutsAccomplished" to workoutsAccomplished,
+                "calories" to calories,
+                "minutes" to minutes
             )
 
             return try {
@@ -203,7 +212,10 @@ object DataManager {
                 "level" to level,
                 "workouts" to workoutList,
                 "favorites" to favoritesList,
-                "workoutDates" to workoutDatesList
+                "workoutDates" to workoutDatesList,
+                "workoutsAccomplished" to workoutsAccomplished,
+                "calories" to calories,
+                "minutes" to minutes
                 // Add other user information fields as needed
             )
 
@@ -236,5 +248,8 @@ object DataManager {
         workouts.clear()
         favorites.clear()
         workoutDates.clear()
+        workoutsAccomplished = 0
+        calories = 0
+        minutes = 0
     }
 }

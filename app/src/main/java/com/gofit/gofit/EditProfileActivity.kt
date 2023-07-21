@@ -20,6 +20,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
+import com.applandeo.materialcalendarview.CalendarView
 import com.google.firebase.Timestamp
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -67,6 +68,7 @@ class EditProfileActivity : AppCompatActivity() {
     private var newLevel: Int = DataManager.level
     private var newHeight: Int = DataManager.height
     private var newWeight: Int = DataManager.weight
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

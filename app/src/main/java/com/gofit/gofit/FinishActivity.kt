@@ -2,12 +2,16 @@ package com.gofit.gofit
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import com.google.firebase.Timestamp
+import java.time.LocalDate
+import java.time.ZoneId
 import java.util.Date
 
 class FinishActivity : AppCompatActivity() {
@@ -20,6 +24,7 @@ class FinishActivity : AppCompatActivity() {
 
     private lateinit var btnCloseF: Button
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_finish)
@@ -45,8 +50,20 @@ class FinishActivity : AppCompatActivity() {
         tvBMIValueF.text = String.format("%.2f", bmi)
         tvBMIResultF.text = bmiResult
 
+        var numberWorkouts = intent.getIntExtra("numberWorkouts", 0)
+        var calories = intent.getIntExtra("calories", 0)
+        var minutes = intent.getIntExtra("minutes", 0)
+
+        tvWorkoutsValueF.text = numberWorkouts.toString()
+        tvCaloriesValueF.text = calories.toString()
+        tvMinutesValueF.text = minutes.toString()
+
         btnCloseF.setOnClickListener {
             // save data of report
+
+            DataManager.workoutsAccomplished += numberWorkouts
+            DataManager.calories += calories
+            DataManager.minutes += minutes
 
             var currentDate = Timestamp(Date())
             DataManager.workoutDates.add(currentDate)
@@ -61,7 +78,9 @@ class FinishActivity : AppCompatActivity() {
                 }
             }
 
-            DataManager.workoutDates = uniqueTimestamps
+            val uniqueDates: List<Timestamp> = DataManager.workoutDates.distinctBy { it.getDate() }
+
+            DataManager.workoutDates = uniqueDates.toMutableList()
             DataManager.updateDataManager()
 
             var temp : MutableList<Date> = mutableListOf()
@@ -75,5 +94,13 @@ class FinishActivity : AppCompatActivity() {
             setResult(Activity.RESULT_OK, resultIntent)
             finish()
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun Timestamp.getDate(): LocalDate {
+        // Convert the Timestamp to a LocalDateTime
+        val localDateTime = this.toDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()
+        // Extract the date part
+        return localDateTime.toLocalDate()
     }
 }
