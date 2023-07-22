@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="15dp">
+    android:padding="15dp"
+    android:background="@color/Background">
 
     <TextView
         android:id="@+id/tvPrivacyPolicy"
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
         android:text="PRIVACY POLICY"
-        android:textColor="#000000"
+        android:textColor="@color/Blue"
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,7 +23,7 @@
         android:layout_height="2dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
-        android:background="#000000" />
+        android:background="@color/Grey" />
 
     <ScrollView
         android:id="@+id/svWorkouts"
@@ -40,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:text="BEGINNER"
-                android:textColor="#000000"
+                android:textColor="@color/Red"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent" />

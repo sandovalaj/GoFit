@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/Background"
     android:padding="15dp">
 
     <TextView
@@ -12,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
         android:text="REPORT"
-        android:textColor="#000000"
+        android:textColor="@color/Blue"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +24,7 @@
         android:layout_height="2dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
-        android:background="#000000" />
+        android:background="@color/Grey" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -53,7 +54,7 @@
                         android:layout_marginTop="0dp"
                         android:text="0"
                         android:textAlignment="center"
-                        android:textColor="#B50E0E"
+                        android:textColor="@color/Red"
                         android:textSize="34sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -84,7 +85,7 @@
                         android:layout_marginTop="0dp"
                         android:text="0"
                         android:textAlignment="center"
-                        android:textColor="#B50E0E"
+                        android:textColor="@color/Red"
                         android:textSize="34sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -115,7 +116,7 @@
                         android:layout_marginTop="0dp"
                         android:text="0"
                         android:textAlignment="center"
-                        android:textColor="#B50E0E"
+                        android:textColor="@color/Red"
                         android:textSize="34sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -152,8 +153,8 @@
                         android:layout_marginTop="0dp"
                         android:layout_marginBottom="15dp"
                         android:layout_weight="1"
-                        android:text="History"
-                        android:textColor="#000000"
+                        android:text="Workout Schedule"
+                        android:textColor="@color/Blue"
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -188,7 +189,7 @@
                     android:layout_marginTop="0dp"
                     android:layout_weight="1"
                     android:text="BMI (kg/m2)"
-                    android:textColor="#000000"
+                    android:textColor="@color/Blue"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -200,7 +201,7 @@
                     android:layout_marginTop="0dp"
                     android:text="99.99"
                     android:textAlignment="center"
-                    android:textColor="#000000"
+                    android:textColor="@color/Red"
                     android:textSize="34sp"
                     android:textStyle="bold"
                     app:layout_constraintTop_toTopOf="parent" />

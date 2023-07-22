@@ -4,18 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/Background"
     android:orientation="vertical"
     android:padding="15dp"
     tools:context=".EditProfileActivity">
 
     <TextView
         android:id="@+id/tvMemberInfo3"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
         android:text="MEMBER INFORMATION"
-        android:textColor="#000000"
+        android:textColor="@color/Blue"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
@@ -24,7 +26,7 @@
         android:layout_height="2dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
-        android:background="#000000" />
+        android:background="@color/Grey" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -57,7 +59,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="15dp"
                     android:text="Personal Information"
-                    android:textColor="#000000"
+                    android:textColor="@color/Blue"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -67,7 +69,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:text="First Name"
-                    android:textColor="#000000"
+                    android:textColor="@color/Red"
                     android:textSize="16sp" />
 
                 <EditText
@@ -77,6 +79,7 @@
                     android:layout_height="48dp"
                     android:ems="10"
                     android:hint="First Name"
+                    android:textColorHint="@color/Grey"
                     android:inputType="text|textPersonName" />
 
                 <TextView
@@ -86,7 +89,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="5dp"
                     android:text="Middle Name"
-                    android:textColor="#000000"
+                    android:textColor="@color/Red"
                     android:textSize="16sp" />
 
                 <EditText
@@ -96,6 +99,7 @@
                     android:layout_height="48dp"
                     android:ems="10"
                     android:hint="Middle Name"
+                    android:textColorHint="@color/Grey"
                     android:inputType="text|textPersonName" />
 
                 <TextView
@@ -105,7 +109,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="5dp"
                     android:text="Last Name"
-                    android:textColor="#000000"
+                    android:textColor="@color/Red"
                     android:textSize="16sp" />
 
                 <EditText
@@ -115,6 +119,7 @@
                     android:layout_height="48dp"
                     android:ems="10"
                     android:hint="Last Name"
+                    android:textColorHint="@color/Grey"
                     android:inputType="text|textPersonName" />
 
                 <TextView
@@ -124,7 +129,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="5dp"
                     android:text="Address"
-                    android:textColor="#000000"
+                    android:textColor="@color/Red"
                     android:textSize="16sp" />
 
                 <EditText
@@ -134,6 +139,7 @@
                     android:layout_height="48dp"
                     android:ems="10"
                     android:hint="Address"
+                    android:textColorHint="@color/Grey"
                     android:inputType="text|textPersonName" />
 
                 <TextView
@@ -143,21 +149,20 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="5dp"
                     android:text="Birthday"
-                    android:textColor="#000000"
+                    android:textColor="@color/Red"
                     android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/etBirthday"
+                    style="@style/Widget.AppCompat.EditText"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:clickable="true"
                     android:ems="10"
-                    android:hint="Birthday Temp"
-                    android:inputType="text|textPersonName"
-                    android:text="eee"
-                    android:textColor="#000000"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:hint="Birthday"
+                    android:textColorHint="@color/Grey"
+                    android:textSize="16sp"
+                    android:inputType="text|textPersonName"/>
 
                 <TextView
                     android:id="@+id/tvGender"
@@ -166,7 +171,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="5dp"
                     android:text="Gender"
-                    android:textColor="#000000"
+                    android:textColor="@color/Red"
                     android:textSize="16sp" />
 
                 <RadioGroup
@@ -180,21 +185,25 @@
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:text="Male" />
+                        android:text="Male"
+                        android:textColor="@color/Blue"/>
+
 
                     <RadioButton
                         android:id="@+id/rbFemale"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:text="Female" />
+                        android:text="Female"
+                        android:textColor="@color/Blue"/>
 
                     <RadioButton
                         android:id="@+id/rbOthers"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:text="Others" />
+                        android:text="Others"
+                        android:textColor="@color/Blue"/>
                 </RadioGroup>
 
                 <TextView
@@ -204,7 +213,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="5dp"
                     android:text="Civil Status"
-                    android:textColor="#000000"
+                    android:textColor="@color/Red"
                     android:textSize="16sp" />
 
                 <RadioGroup
@@ -218,21 +227,24 @@
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:text="Single" />
+                        android:text="Single"
+                        android:textColor="@color/Blue"/>
 
                     <RadioButton
                         android:id="@+id/rbMarried"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:text="Married" />
+                        android:text="Married"
+                        android:textColor="@color/Blue"/>
 
                     <RadioButton
                         android:id="@+id/rbDivorced"
                         android:layout_width="0dp"
                         android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:text="Divorced" />
+                        android:text="Divorced"
+                        android:textColor="@color/Blue"/>
 
                 </RadioGroup>
 
@@ -243,7 +255,7 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="15dp"
                     android:text="Workout Plan"
-                    android:textColor="#000000"
+                    android:textColor="@color/Red"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -254,7 +266,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="5dp"
                     android:text="Height"
-                    android:textColor="#000000"
+                    android:textColor="@color/Red"
                     android:textSize="16sp" />
 
                 <LinearLayout
@@ -272,9 +284,9 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:ems="10"
-                        android:hint="Birthday Temp"
+                        android:hint="Feet"
+                        android:textColorHint="@color/Grey"
                         android:inputType="text|textPersonName"
-                        android:text="eee"
                         android:textColor="#000000"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -286,9 +298,9 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:ems="10"
-                        android:hint="Birthday Temp"
+                        android:hint="ft."
+                        android:textColorHint="@color/Grey"
                         android:inputType="text|textPersonName"
-                        android:text="ft"
                         android:textColor="#000000"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -300,9 +312,9 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:ems="10"
-                        android:hint="Birthday Temp"
+                        android:hint="Inches"
+                        android:textColorHint="@color/Grey"
                         android:inputType="text|textPersonName"
-                        android:text="eee"
                         android:textColor="#000000"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -314,9 +326,9 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:ems="10"
-                        android:hint="Birthday Temp"
+                        android:hint="in."
+                        android:textColorHint="@color/Grey"
                         android:inputType="text|textPersonName"
-                        android:text="in"
                         android:textColor="#000000"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -329,7 +341,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="5dp"
                     android:text="Weight"
-                    android:textColor="#000000"
+                    android:textColor="@color/Red"
                     android:textSize="16sp" />
 
                 <LinearLayout
@@ -345,9 +357,9 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:ems="10"
-                        android:hint="Birthday Temp"
+                        android:hint="Weight"
+                        android:textColorHint="@color/Grey"
                         android:inputType="text|textPersonName"
-                        android:text="eee"
                         android:textColor="#000000"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -359,9 +371,10 @@
                         android:layout_weight="1"
                         android:clickable="true"
                         android:ems="10"
-                        android:hint="Birthday Temp"
+                        android:hint="Weight"
+                        android:textColorHint="@color/Grey"
                         android:inputType="text|textPersonName"
-                        android:text="LBS"
+                        android:text="Kg"
                         android:textAlignment="textEnd"
                         android:textColor="#000000"
                         android:textSize="18sp"
@@ -376,7 +389,7 @@
                     android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:text="Fitness Goal"
-                    android:textColor="#000000"
+                    android:textColor="@color/Red"
                     android:textSize="16sp" />
 
                 <RadioGroup
@@ -390,21 +403,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:text="Weight Loss" />
+                        android:text="Weight Loss"
+                        android:textColor="@color/Blue"/>
 
                     <RadioButton
                         android:id="@+id/rbMuscleGain"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:text="Muscle Gain" />
+                        android:text="Muscle Gain"
+                        android:textColor="@color/Blue"/>
 
                     <RadioButton
                         android:id="@+id/rbOverall"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:text="Overall" />
+                        android:text="Overall"
+                        android:textColor="@color/Blue"/>
                 </RadioGroup>
 
                 <TextView
@@ -415,7 +431,7 @@
                     android:layout_marginBottom="5dp"
                     android:layout_weight="1"
                     android:text="Fitness Level"
-                    android:textColor="#000000"
+                    android:textColor="@color/Red"
                     android:textSize="16sp" />
 
                 <RadioGroup
@@ -430,21 +446,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:text="Beginner" />
+                        android:text="Beginner"
+                        android:textColor="@color/Blue"/>
 
                     <RadioButton
                         android:id="@+id/rbInter"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:text="Intermediate" />
+                        android:text="Intermediate"
+                        android:textColor="@color/Blue"/>
 
                     <RadioButton
                         android:id="@+id/rbAdvanced"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_weight="1"
-                        android:text="Advanced" />
+                        android:text="Advanced"
+                        android:textColor="@color/Blue"/>
                 </RadioGroup>
 
             </LinearLayout>

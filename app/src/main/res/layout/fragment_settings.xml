@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Background"
+    android:backgroundTint="@color/Background"
     android:orientation="vertical"
     android:padding="15dp">
 
@@ -13,8 +15,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
         android:text="SETTINGS"
-        android:textColor="#000000"
+        android:textColor="@color/Blue"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
@@ -23,7 +26,8 @@
         android:layout_height="2dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="15dp"
-        android:background="#000000" />
+        android:background="#000000"
+        android:backgroundTint="@color/Grey" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -51,7 +55,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="Edit Profile"
-            android:textColor="#000000"
+            android:textColor="@color/Red"
             android:textSize="20sp" />
 
         <ImageView
@@ -81,7 +85,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="Privacy Policy"
-            android:textColor="#000000"
+            android:textColor="@color/Red"
             android:textSize="20sp" />
 
         <ImageView
@@ -110,7 +114,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="Log Out"
-            android:textColor="#000000"
+            android:textColor="@color/Red"
             android:textSize="20sp" />
 
         <ImageView
