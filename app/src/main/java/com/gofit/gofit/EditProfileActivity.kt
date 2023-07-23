@@ -202,11 +202,11 @@ class EditProfileActivity : AppCompatActivity() {
         etWeightValue.setOnClickListener {
             val numberPicker = NumberPicker(this)
             numberPicker.minValue = 0
-            numberPicker.maxValue = 100
+            numberPicker.maxValue = 500
             numberPicker.value = newWeight
 
             val alertDialogBuilder = AlertDialog.Builder(this)
-                .setTitle("Select your weight in kg")
+                .setTitle("Select your weight in lbs")
                 .setView(numberPicker)
                 .setPositiveButton("OK") { _, _ ->
                     newWeight = numberPicker.value

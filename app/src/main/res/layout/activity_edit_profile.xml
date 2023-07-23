@@ -372,11 +372,11 @@
                         android:clickable="true"
                         android:ems="10"
                         android:hint="Weight"
-                        android:textColorHint="@color/Grey"
                         android:inputType="text|textPersonName"
-                        android:text="Kg"
+                        android:text="lbs"
                         android:textAlignment="textEnd"
                         android:textColor="#000000"
+                        android:textColorHint="@color/Grey"
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>

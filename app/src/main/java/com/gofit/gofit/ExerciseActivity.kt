@@ -138,7 +138,8 @@ class ExerciseActivity : AppCompatActivity() {
                 var durationMinutes = totalDurationSeconds / 60
                 durationMinutes = Math.ceil(durationMinutes)
 
-                calories = totalMet * (DataManager.weight * 0.453592) * (durationMinutes / 60)
+                // mins * MET * 3.5 * kg / 200
+                calories = (durationMinutes * totalMet * 3.5 * (DataManager.weight * 0.453592)) / 200
                 var intent = Intent(this, FinishActivity::class.java)
 
                 intent.putExtra("numberWorkouts", workoutListSize)
