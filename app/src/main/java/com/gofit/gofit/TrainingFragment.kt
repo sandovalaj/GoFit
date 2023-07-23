@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 
 class TrainingFragment : Fragment() {
     private lateinit var rvWorkouts: RecyclerView
-    private lateinit var tvWorkoutLabel: TextView
     private lateinit var db: SQLiteDatabase
 
     data class Item(val imageResId: Int, val text: String, val workouts: MutableList<Workout>)
@@ -69,8 +68,6 @@ class TrainingFragment : Fragment() {
         val adapter = RVAdaptorWorkoutGroups(items)
         rvWorkouts.adapter = adapter
 
-        tvWorkoutLabel = rootView.findViewById(R.id.tvWorkoutLabel)
-        tvWorkoutLabel.text = "Test"
         return rootView
     }
 
