@@ -126,12 +126,10 @@ class ExerciseActivity : AppCompatActivity() {
 
         btnClose.setOnClickListener{
             if (current == workoutListSize - 1 && nexts >= workoutListSize - 1) {
-                var totalMet = 0.0
                 var totalDurationSeconds = 0.0
                 var calories = 0.0
 
                 for (workout in workoutList!!) {
-                    totalMet += workout.met
                     totalDurationSeconds += workout.duration
                 }
 
@@ -139,7 +137,7 @@ class ExerciseActivity : AppCompatActivity() {
                 durationMinutes = Math.ceil(durationMinutes)
 
                 // mins * MET * 3.5 * kg / 200
-                calories = (durationMinutes * totalMet * 3.5 * (DataManager.weight * 0.453592)) / 200
+                calories = (durationMinutes * 7 * 3.5 * (DataManager.weight * 0.453592)) / 200
                 var intent = Intent(this, FinishActivity::class.java)
 
                 intent.putExtra("numberWorkouts", workoutListSize)
