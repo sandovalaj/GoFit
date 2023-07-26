@@ -22,6 +22,9 @@ class GoalsActivity : AppCompatActivity() {
 
         btnWeightLoss = findViewById(R.id.btnWeightLoss)
         btnWeightLoss.setOnClickListener{
+            btnWeightLoss.setBackgroundResource(R.drawable.edittext_redfill_blackborder)
+            btnMuscle.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
+            btnOverall.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
             btnWeightLoss.isSelected = true
             btnMuscle.isSelected = false
             btnOverall.isSelected = false
@@ -30,6 +33,9 @@ class GoalsActivity : AppCompatActivity() {
 
         btnMuscle = findViewById(R.id.btnMuscle)
         btnMuscle.setOnClickListener{
+            btnWeightLoss.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
+            btnMuscle.setBackgroundResource(R.drawable.edittext_redfill_blackborder)
+            btnOverall.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
             btnWeightLoss.isSelected = false
             btnMuscle.isSelected = true
             btnOverall.isSelected = false
@@ -38,6 +44,9 @@ class GoalsActivity : AppCompatActivity() {
 
         btnOverall = findViewById(R.id.btnOverall)
         btnOverall.setOnClickListener{
+            btnWeightLoss.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
+            btnMuscle.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
+            btnOverall.setBackgroundResource(R.drawable.edittext_redfill_blackborder)
             btnWeightLoss.isSelected = false
             btnMuscle.isSelected = false
             btnOverall.isSelected = true

@@ -26,53 +26,54 @@ class LevelActivity : AppCompatActivity() {
         var selected = false
 
         loBeginner = findViewById(R.id.loBeginner)
-        loBeginner.setOnClickListener{
-            loBeginner.setBackgroundColor(Color.RED)
-            loInter.setBackgroundColor(Color.parseColor(greyColor))
-            loAdv.setBackgroundColor(Color.parseColor(greyColor))
+        loBeginner.setOnClickListener {
+            loBeginner.setBackgroundResource(R.drawable.edittext_redfill_blackborder)
+            loInter.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
+            loAdv.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
             DataManager.level = 1
             selected = true
         }
 
         loInter = findViewById(R.id.loInter)
-        loInter.setOnClickListener{
-            loBeginner.setBackgroundColor(Color.parseColor(greyColor))
-            loInter.setBackgroundColor(Color.RED)
-            loAdv.setBackgroundColor(Color.parseColor(greyColor))
+        loInter.setOnClickListener {
+            loBeginner.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
+            loInter.setBackgroundResource(R.drawable.edittext_redfill_blackborder)
+            loAdv.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
             DataManager.level = 2
             selected = true
         }
 
         loAdv = findViewById(R.id.loAdv)
-        loAdv.setOnClickListener{
-            loBeginner.setBackgroundColor(Color.parseColor(greyColor))
-            loInter.setBackgroundColor(Color.parseColor(greyColor))
-            loAdv.setBackgroundColor(Color.RED)
+        loAdv.setOnClickListener {
+            loBeginner.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
+            loInter.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
+            loAdv.setBackgroundResource(R.drawable.edittext_redfill_blackborder)
             DataManager.level = 3
             selected = true
         }
 
         tvPrompt = findViewById(R.id.tvPrompt)
         btnLCont = findViewById(R.id.btnLCont)
-        btnLCont.setOnClickListener{
+        btnLCont.setOnClickListener {
             if (!selected) {
                 tvPrompt.text = "Please select an option."
                 return@setOnClickListener
             }
 
-            tvPrompt.text = ""
+            tvPrompt.text = " "
             var intent = Intent(this, SignupSuccessActivity::class.java)
             startActivity(intent)
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> {
-                onBackPressed()
-                true
+        override fun onOptionsItemSelected(item: MenuItem): Boolean {
+            return when (item.itemId) {
+                android.R.id.home -> {
+                    onBackPressed()
+                    true
+                }
+
+                else -> super.onOptionsItemSelected(item)
             }
-            else -> super.onOptionsItemSelected(item)
         }
     }
-}

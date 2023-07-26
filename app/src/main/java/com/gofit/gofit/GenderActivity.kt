@@ -28,6 +28,9 @@ class GenderActivity : AppCompatActivity() {
 
         btnMale = findViewById(R.id.btnMale)
         btnMale.setOnClickListener{
+            btnMale.setBackgroundResource(R.drawable.edittext_redfill_blackborder)
+            btnFemale.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
+            btnNo.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
             btnMale.isSelected = true
             btnFemale.isSelected = false
             btnNo.isSelected = false
@@ -36,6 +39,9 @@ class GenderActivity : AppCompatActivity() {
 
         btnFemale = findViewById(R.id.btnFemale)
         btnFemale.setOnClickListener{
+            btnMale.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
+            btnFemale.setBackgroundResource(R.drawable.edittext_redfill_blackborder)
+            btnNo.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
             btnMale.isSelected = false
             btnFemale.isSelected = true
             btnNo.isSelected = false
@@ -44,6 +50,9 @@ class GenderActivity : AppCompatActivity() {
 
         btnNo = findViewById(R.id.btnNo)
         btnNo.setOnClickListener{
+            btnMale.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
+            btnFemale.setBackgroundResource(R.drawable.edittext_greyfill_blackborder)
+            btnNo.setBackgroundResource(R.drawable.edittext_redfill_blackborder)
             btnMale.isSelected = false
             btnFemale.isSelected = false
             btnNo.isSelected = true
